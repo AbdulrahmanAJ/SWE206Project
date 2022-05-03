@@ -1,14 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.swe206project.HelloController"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="615.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.HelloController">
+   <children>
+      <BorderPane prefHeight="617.0" prefWidth="1145.0">
+         <left>
+            <VBox prefHeight="479.0" prefWidth="214.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#onBackClick" prefHeight="63.0" prefWidth="233.0" text="Back" />
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="214.0" text="Candidates" textAlignment="CENTER">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Label>
+                  <ListView fx:id="candidatesList" prefHeight="431.0" prefWidth="247.0" />
+               </children>
+            </VBox>
+         </left>
+         <bottom>
+            <HBox prefHeight="138.0" prefWidth="1145.0" spacing="20.0" BorderPane.alignment="CENTER">
+               <children>
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickAddCandidate" prefHeight="99.0" prefWidth="147.0" text="Add a new candidate" textAlignment="CENTER" wrapText="true" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEditCandidate" prefHeight="100.0" prefWidth="159.0" text="Edit the selected Candidate" textAlignment="CENTER" wrapText="true" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="101.0" prefWidth="138.0" text="Edit the selected candidate's personal information" textAlignment="CENTER" wrapText="true" />
+                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="140.0" text="Create Interview">
+                     <HBox.margin>
+                        <Insets left="440.0" />
+                     </HBox.margin>
+                  </Button>
+               </children>
+               <padding>
+                  <Insets left="20.0" right="20.0" top="20.0" />
+               </padding>
+            </HBox>
+         </bottom>
+         <center>
+            <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+               <bottom>
+                  <HBox prefHeight="128.0" prefWidth="931.0" spacing="20.0" BorderPane.alignment="CENTER">
+                     <children>
+                        <Label prefHeight="125.0" prefWidth="141.0" text="Interviewes:">
+                           <font>
+                              <Font size="25.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="interview" alignment="CENTER" prefHeight="130.0" prefWidth="133.0" text="Interview 1" textAlignment="CENTER" textFill="#eb0909" underline="true">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="130.0" prefWidth="133.0" text="Interview 2" textAlignment="CENTER" textFill="#eb0909" underline="true">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                        <Label alignment="CENTER" prefHeight="130.0" prefWidth="133.0" text="Interview 3" textAlignment="CENTER" textFill="#eb0909" underline="true">
+                           <font>
+                              <Font size="23.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
+               </bottom>
+               <top>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="102.0" prefWidth="354.0" text="Selected Candidate" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </top>
+               <center>
+                  <Label prefHeight="43.0" prefWidth="214.0" text="Personal Info" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
+                     <font>
+                        <Font size="27.0" />
+                     </font>
+                  </Label>
+               </center>
+            </BorderPane>
+         </center>
+      </BorderPane>
+   </children>
 </AnchorPane>
