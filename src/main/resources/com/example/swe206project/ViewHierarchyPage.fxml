@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.HelloController">
+   <children>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutX="180.0" layoutY="174.0" text="Heirarchy page">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </Label>
+      <Button layoutX="280.0" layoutY="296.0" mnemonicParsing="false" onAction="#onBackClick" text="Back" />
+   </children>
+</AnchorPane>
