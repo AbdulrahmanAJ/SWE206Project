@@ -1,4 +1,4 @@
-package com.example.swe206project;
+package com.example.swe206project.models;
 
 public class JobOffer {
     Candidate candidate;
