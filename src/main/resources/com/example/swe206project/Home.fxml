@@ -16,7 +16,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="50.0" mnemonicParsing="false" onAction="#onViewInterviewsClick" prefHeight="96.0" prefWidth="120.0" text="View and manage interviews" textAlignment="CENTER" wrapText="true">
+            <Button alignment="CENTER" contentDisplay="CENTER" graphicTextGap="50.0" mnemonicParsing="false" onAction="#onViewInterviewsClick" prefHeight="96.0" prefWidth="120.0" text="View and manage interviewers" textAlignment="CENTER" wrapText="true">
                <opaqueInsets>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
