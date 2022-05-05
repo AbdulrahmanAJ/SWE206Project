@@ -12,13 +12,14 @@
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="615.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.Controller">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.Controller">
    <children>
-      <BorderPane prefHeight="617.0" prefWidth="1145.0">
+      <BorderPane prefHeight="600.0" prefWidth="800.0">
          <left>
             <VBox prefHeight="479.0" prefWidth="214.0" BorderPane.alignment="CENTER">
                <children>
@@ -36,9 +37,10 @@
             <HBox prefHeight="138.0" prefWidth="1145.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickAddCandidate" prefHeight="99.0" prefWidth="147.0" text="Add a new candidate" textAlignment="CENTER" wrapText="true" />
-                  <Button alignment="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="140.0" text="Create Interview" textAlignment="CENTER" wrapText="true">
+                  <Pane prefHeight="118.0" prefWidth="765.0" />
+                  <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="140.0" text="Create Interview" textAlignment="CENTER" wrapText="true">
                      <HBox.margin>
-                        <Insets left="840.0" />
+                        <Insets />
                      </HBox.margin>
                   </Button>
                </children>
