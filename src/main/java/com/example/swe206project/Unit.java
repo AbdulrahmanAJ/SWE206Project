@@ -1,4 +1,4 @@
-package com.example.swe206project.models;
+package com.example.swe206project;
 
 import java.util.ArrayList;
 

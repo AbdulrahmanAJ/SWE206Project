@@ -1,4 +1,4 @@
-package com.example.swe206project.controllers;
+package com.example.swe206project;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
