@@ -35,7 +35,7 @@ public class Controller {
     private TextField experienceTextField;
 
     @FXML
-    private TextField interviewerNameTextField;
+    private TextField InterviewerNameTextField;
 
     //Radio Buttons IDs
     @FXML
@@ -60,13 +60,10 @@ public class Controller {
     }
     @FXML
     protected void onClickAddInterviewers(){
-        String newInterviewerName = interviewerNameTextField.getText();
-        if (newInterviewerName == "")
-            return;
-        //For emptying the text field
-        interviewerNameTextField.setText("");
-        //Adding the name to the list view
-        interviewersList.getItems().add(newInterviewerName);
+        InterviewersList.getItems().add("Rashed Almanie");
+        InterviewersList.getItems().add("Fahad Alshedy");
+        InterviewersList.getItems().add("Abdulrahman ALmalki");
+        InterviewersList.getItems().add("Abdulrahman Jamal");
     }
 
     @FXML
