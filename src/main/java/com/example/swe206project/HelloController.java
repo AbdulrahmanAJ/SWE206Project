@@ -34,10 +34,6 @@ public class HelloController {
         candidatesList.getItems().add("Abdulrahman ALmalki");
         candidatesList.getItems().add("Abdulrahman Jamal");
     }
-    @FXML
-    protected void onClickEditCandidate(){
-        interview.setText("HAHA");
-    }
 
     @FXML
     protected void onViewInterviewsClick(ActionEvent event) throws IOException {

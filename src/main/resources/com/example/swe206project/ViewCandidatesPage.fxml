@@ -10,13 +10,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="615.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.HelloController">
+<AnchorPane prefHeight="615.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.HelloController">
    <children>
       <BorderPane prefHeight="617.0" prefWidth="1145.0">
          <left>
             <VBox prefHeight="479.0" prefWidth="214.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onBackClick" prefHeight="63.0" prefWidth="233.0" text="Back" />
+                  <Button mnemonicParsing="false" onAction="#onBackClick" prefHeight="63.0" prefWidth="233.0" text="Back" textAlignment="CENTER" wrapText="true" />
                   <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="49.0" prefWidth="214.0" text="Candidates" textAlignment="CENTER">
                      <font>
                         <Font size="20.0" />
@@ -30,11 +30,9 @@
             <HBox prefHeight="138.0" prefWidth="1145.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickAddCandidate" prefHeight="99.0" prefWidth="147.0" text="Add a new candidate" textAlignment="CENTER" wrapText="true" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickEditCandidate" prefHeight="100.0" prefWidth="159.0" text="Edit the selected Candidate" textAlignment="CENTER" wrapText="true" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="101.0" prefWidth="138.0" text="Edit the selected candidate's personal information" textAlignment="CENTER" wrapText="true" />
-                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="140.0" text="Create Interview">
+                  <Button mnemonicParsing="false" prefHeight="100.0" prefWidth="140.0" text="Create Interview" textAlignment="CENTER" wrapText="true">
                      <HBox.margin>
-                        <Insets left="440.0" />
+                        <Insets left="840.0" />
                      </HBox.margin>
                   </Button>
                </children>
