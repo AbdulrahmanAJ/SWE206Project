@@ -16,7 +16,7 @@
             <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
                   <Button mnemonicParsing="false" onAction="#onClickAddInterviewers" prefHeight="66.0" prefWidth="149.0" text="Add a new Interviewer" />
-                  <TextField fx:id="InterviewerNameTextField" promptText="Interviewer name" />
+                  <TextField fx:id="interviewerNameTextField" promptText="Interviewer name" />
                </children>
             </HBox>
          </bottom>
@@ -33,7 +33,7 @@
             </HBox>
          </top>
          <center>
-            <ListView fx:id="InterviewersList" prefHeight="220.0" prefWidth="475.0" BorderPane.alignment="CENTER" />
+            <ListView fx:id="interviewersList" prefHeight="220.0" prefWidth="475.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </children>
