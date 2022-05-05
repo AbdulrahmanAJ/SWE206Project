@@ -19,7 +19,7 @@ public class Controller {
     private ListView candidatesList;
 
     @FXML
-    private ListView interviewersList;
+    private ListView InterviewersList;
 
     @FXML
     private Label interview;
