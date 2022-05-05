@@ -19,7 +19,7 @@ public class Controller {
     private ListView candidatesList;
 
     @FXML
-    private ListView InterviewersList;
+    private ListView interviewersList;
 
     @FXML
     private Label interview;
@@ -35,7 +35,7 @@ public class Controller {
     private TextField experienceTextField;
 
     @FXML
-    private TextField InterviewerNameTextField;
+    private TextField interviewerNameTextField;
 
     //Radio Buttons IDs
     @FXML
@@ -60,10 +60,11 @@ public class Controller {
     }
     @FXML
     protected void onClickAddInterviewers(){
-        InterviewersList.getItems().add("Rashed Almanie");
-        InterviewersList.getItems().add("Fahad Alshedy");
-        InterviewersList.getItems().add("Abdulrahman ALmalki");
-        InterviewersList.getItems().add("Abdulrahman Jamal");
+        String newInterviewerName = interviewerNameTextField.getText();
+        if (newInterviewerName == "")
+            return;
+        interviewersList.getItems().add(newInterviewerName);
+        interviewerNameTextField.setText("");
     }
 
     @FXML
