@@ -37,8 +37,8 @@
             <HBox prefHeight="138.0" prefWidth="1145.0" spacing="20.0" BorderPane.alignment="CENTER">
                <children>
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickAddCandidate" prefHeight="99.0" prefWidth="147.0" text="Add a new candidate" textAlignment="CENTER" wrapText="true" />
-                  <Pane prefHeight="118.0" prefWidth="765.0" />
-                  <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="140.0" text="Create Interview" textAlignment="CENTER" wrapText="true">
+                  <Pane prefHeight="118.0" prefWidth="642.0" />
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="140.0" text="Create Interview" textAlignment="CENTER" wrapText="true">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>
@@ -54,7 +54,7 @@
                <bottom>
                   <HBox prefHeight="128.0" prefWidth="931.0" spacing="20.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Label prefHeight="125.0" prefWidth="141.0" text="Interviewes:">
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="125.0" prefWidth="150.0" text="Interviewes:" textAlignment="CENTER">
                            <font>
                               <Font size="25.0" />
                            </font>
@@ -77,15 +77,8 @@
                      </children>
                   </HBox>
                </bottom>
-               <top>
-                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="102.0" prefWidth="354.0" text="Selected Candidate" textAlignment="CENTER" wrapText="true" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font size="33.0" />
-                     </font>
-                  </Label>
-               </top>
                <left>
-                  <HBox alignment="CENTER" prefHeight="249.0" prefWidth="926.0" spacing="20.0" BorderPane.alignment="CENTER">
+                  <HBox alignment="CENTER" prefHeight="259.0" prefWidth="795.0" spacing="20.0" BorderPane.alignment="CENTER">
                      <children>
                         <Label prefHeight="228.0" prefWidth="210.0" text="Personal info: ">
                            <font>
