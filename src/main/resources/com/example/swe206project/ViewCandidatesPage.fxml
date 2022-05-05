@@ -16,7 +16,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="615.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.HelloController">
+<AnchorPane prefHeight="615.0" prefWidth="1145.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.Controller">
    <children>
       <BorderPane prefHeight="617.0" prefWidth="1145.0">
          <left>
@@ -108,8 +108,8 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="258.0" promptText="eg. Ahmed Alahmed" GridPane.columnIndex="1" />
-                              <TextField alignment="CENTER" prefHeight="33.0" prefWidth="156.0" promptText="ID must contain 10 numbers" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <TextField fx:id="nameTextField" alignment="CENTER" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="258.0" promptText="eg. Ahmed Alahmed" GridPane.columnIndex="1" />
+                              <TextField fx:id="idTextField" alignment="CENTER" prefHeight="33.0" prefWidth="156.0" promptText="ID must contain 10 numbers" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                               <Label text="ID" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="14.0" />
@@ -120,13 +120,13 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="258.0" promptText="B: Bachelor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                              <TextField fx:id="eduTextField" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="258.0" promptText="B: Bachelor" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                               <Label text="Years of experience" GridPane.rowIndex="3">
                                  <font>
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <TextField alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="258.0" promptText="eg. 1,10" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                              <TextField fx:id="experienceTextField" alignment="CENTER" maxWidth="1.7976931348623157E308" prefHeight="33.0" prefWidth="258.0" promptText="eg. 1,10" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                               <Label text="Gender" GridPane.rowIndex="4">
                                  <font>
                                     <Font size="14.0" />
@@ -134,12 +134,12 @@
                               </Label>
                               <HBox alignment="CENTER" prefHeight="33.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <children>
-                                    <RadioButton mnemonicParsing="false" text=" Male">
+                                    <RadioButton fx:id="maleRadio" mnemonicParsing="false" text=" Male">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="gender" />
                                        </toggleGroup>
                                     </RadioButton>
-                                    <RadioButton mnemonicParsing="false" text="Female" toggleGroup="$gender" />
+                                    <RadioButton fx:id="femaleRadio" mnemonicParsing="false" text="Female" toggleGroup="$gender" />
                                  </children>
                               </HBox>
                            </children>

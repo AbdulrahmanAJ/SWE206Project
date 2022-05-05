@@ -12,10 +12,10 @@ public class App extends Application {
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Home.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
-        stage.setTitle("Hello!");
+        stage.setTitle("App");
         stage.setScene(scene);
         stage.show();
-        System.out.println("java version: "+System.getProperty("java.version"));
+        System.out.println("java version: " +   System.getProperty("java.version"  ));
         System.out.println("javafx.version: " + System.getProperty("javafx.version"));
     }
 
