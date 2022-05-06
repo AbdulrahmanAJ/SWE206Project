@@ -23,7 +23,7 @@ public class Controller {
     private ListView<Candidate> candidatesList;
 
     @FXML
-    private ListView<Interview> interviewersList;
+    private ListView<Interviewer> interviewersList;
 
     @FXML
     private Label interview;
@@ -109,7 +109,7 @@ public class Controller {
         if (newInterviewerName == "")
             return;
         //interviewersList.getItems().add(newInterviewerName);
-        interviewerNameTextField.setText("");
+        interviewerNameTextField.clear();
     }
 
     @FXML
