@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.Controller">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.Controller">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="800.0">
          <left>
@@ -29,7 +29,7 @@
                         <Font size="20.0" />
                      </font>
                   </Label>
-                  <ListView fx:id="candidatesList" prefHeight="431.0" prefWidth="247.0" />
+                  <ListView fx:id="candidatesList" onMouseClicked="#onCandidateListClick" prefHeight="431.0" prefWidth="247.0" />
                </children>
             </VBox>
          </left>
@@ -129,7 +129,7 @@
                               </Label>
                               <HBox alignment="CENTER" prefHeight="33.0" prefWidth="200.0" spacing="10.0" GridPane.columnIndex="1" GridPane.rowIndex="4">
                                  <children>
-                                    <RadioButton fx:id="maleRadio" mnemonicParsing="false" text=" Male">
+                                    <RadioButton fx:id="maleRadio" mnemonicParsing="false" text="Male">
                                        <toggleGroup>
                                           <ToggleGroup fx:id="gender" />
                                        </toggleGroup>

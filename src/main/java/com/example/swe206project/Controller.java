@@ -13,13 +13,17 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Controller {
-    @FXML
-    private ListView candidatesList;
+
+    ArrayList<Candidate> candidateArrayList = new ArrayList<>();
 
     @FXML
-    private ListView interviewersList;
+    private ListView<Candidate> candidatesList;
+
+    @FXML
+    private ListView<Interview> interviewersList;
 
     @FXML
     private Label interview;
@@ -51,19 +55,60 @@ public class Controller {
         appStage.setScene(heirScene);
         appStage.show();
     }
+
+    @FXML
+    protected void onCandidateListClick(){
+        Candidate candidate = candidatesList.getSelectionModel().getSelectedItem();
+
+        nameTextField.setText(candidate.getName());
+        idTextField.setText(candidate.getNationalID());
+        eduTextField.setText(candidate.getEducationLevel());
+        experienceTextField.setText(candidate.getYearsOfExperience() + "");
+        if (candidate.getGender().equalsIgnoreCase("male"))
+            maleRadio.setSelected(true);
+        if (candidate.getGender().equalsIgnoreCase("female"))
+            femaleRadio.setSelected(true);
+
+    }
+
     @FXML
     protected void onClickAddCandidate(){
-        candidatesList.getItems().add("Rashed Almanie");
-        candidatesList.getItems().add("Fahad Alshedy");
-        candidatesList.getItems().add("Abdulrahman ALmalki");
-        candidatesList.getItems().add("Abdulrahman Jamal");
+        try {
+
+            Candidate candidate = null;
+            int exp = Integer.parseInt(experienceTextField.getText());
+
+            if (maleRadio.isSelected())
+                candidate = new Candidate(nameTextField.getText(), idTextField.getText(), eduTextField.getText(), exp, maleRadio.getText());
+
+
+            if (femaleRadio.isSelected())
+                candidate = new Candidate(nameTextField.getText(), idTextField.getText(), eduTextField.getText(), exp, femaleRadio.getText());
+
+            candidatesList.getItems().add(candidate);
+            candidateArrayList.add(candidate);
+
+            nameTextField.clear();
+            idTextField.clear();
+            eduTextField.clear();
+            experienceTextField.clear();
+            maleRadio.setSelected(false);
+            femaleRadio.setSelected(false);
+
+
+
+        }
+        catch (NumberFormatException ex){
+            System.out.println("Invalid input");
+        }
+
     }
     @FXML
     protected void onClickAddInterviewers(){
         String newInterviewerName = interviewerNameTextField.getText();
         if (newInterviewerName == "")
             return;
-        interviewersList.getItems().add(newInterviewerName);
+        //interviewersList.getItems().add(newInterviewerName);
         interviewerNameTextField.setText("");
     }
 

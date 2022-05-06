@@ -14,6 +14,14 @@ public class Candidate {
     JobOffer jobOffer = null;
     Unit employmentUnit = null;
 
+    public Candidate(String name, String nationalID, String educationLevel, int yearsOfExperience, String gender){
+        this.name = name;
+        this.nationalID = nationalID;
+        this.educationLevel = educationLevel;
+        this.yearsOfExperience = yearsOfExperience;
+        this.gender = gender;
+    }
+
     public void addInterview(Interview interview) {
         if (interviews.size() < 3)
             interviews.push(interview);
@@ -57,5 +65,9 @@ public class Candidate {
 
     public Unit getEmploymentUnit() {
         return employmentUnit;
+    }
+
+    public String toString(){
+        return this.getName();
     }
 }
