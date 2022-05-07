@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="424.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.Controller">
+<AnchorPane prefHeight="424.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.controllers.CandidatesController">
    <children>
       <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#OnInterviewBackClick" prefHeight="64.0" prefWidth="86.0" text="Back" textAlignment="CENTER">
          <font>
