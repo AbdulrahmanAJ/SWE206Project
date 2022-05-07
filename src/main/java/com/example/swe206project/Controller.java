@@ -21,11 +21,7 @@ public class Controller {
 
     ArrayList<Candidate> candidateArrayList = new ArrayList<>();
 
-    @FXML
-    private ListView<Candidate> candidatesList;
 
-    @FXML
-    private ListView<Interviewer> interviewersList;
 
     @FXML
     private ListView<JobBand> jobBandList;
@@ -39,16 +35,6 @@ public class Controller {
     @FXML
     private Label interview;
 
-    //Text Fields IDs
-    @FXML
-    private TextField nameTextField;
-    @FXML
-    private TextField  idTextField;
-    @FXML
-    private TextField eduTextField;
-    @FXML
-    private TextField experienceTextField;
-
     @FXML
     private TextField interviewerNameTextField;
 
@@ -60,12 +46,34 @@ public class Controller {
     @FXML
     private TextField jobNameTextField;
 
-    //Radio Buttons IDs
+
+
+    // ------------------------------------- 1 - View and manage candidates pages ------------------------------------- \\
+
+    // Those are the IDs
+    @FXML
+    private ListView<Candidate> candidatesList;
+
+    @FXML
+    private ListView<Interviewer> interviewersList;
+
+    //Text fields for the candidates
+    @FXML
+    private TextField nameTextField;
+    @FXML
+    private TextField  idTextField;
+    @FXML
+    private TextField eduTextField;
+    @FXML
+    private TextField experienceTextField;
+
+    //Radio Buttons for the candidates
     @FXML
     private RadioButton maleRadio;
     @FXML
     private RadioButton femaleRadio;
 
+    // This is the method that gets you from the home page to candidates page
     @FXML
     protected void onViewCandidatesClick(ActionEvent event) throws IOException {
         Parent heirParent = FXMLLoader.load(getClass().getResource("ViewCandidatesPage.fxml"));
@@ -75,6 +83,7 @@ public class Controller {
         appStage.show();
     }
 
+    // This method is what happens when you click on a candidate from the candidate list view.
     @FXML
     protected void onCandidateListClick(){
         Candidate candidate = candidatesList.getSelectionModel().getSelectedItem();
@@ -90,6 +99,7 @@ public class Controller {
 
     }
 
+    // This is what happens when you click add candidate a new candidate.
     @FXML
     protected void onClickAddCandidate(){
         try {
@@ -122,7 +132,7 @@ public class Controller {
         }
 
     }
-
+    // This method gets you from the candidates' page to create interview page.
     @FXML
     protected void onCreateInterviewClick(ActionEvent event) throws IOException {
         Parent heirParent = FXMLLoader.load(getClass().getResource("ViewCreateInterviewPage.fxml"));
@@ -132,18 +142,33 @@ public class Controller {
         appStage.show();
     }
 
+    // IDs
     @FXML
     private DatePicker interviewDatePicker;
 
     @FXML
     private Label dateConfirmationLabel;
 
+    // This method is what happens when you choose a date.
+    // TODO: Make the confirmation only appears when you choose an interviewer and a date.
     @FXML
-    public void getInterviewDate(ActionEvent event){
+    public void getInterviewDate(){
         //Getting the date from the date picker
         LocalDate interviewDate = interviewDatePicker.getValue();
         //Setting the confirmation message
         dateConfirmationLabel.setText("Interview with (Interviewer name) On:\n " + interviewDate);
+    }
+
+    // ------------------------------------- 2 - View and manage interviewers page ------------------------------------- \\
+
+    // This is the method that gets you from the home page to interviewers page
+    @FXML
+    protected void onViewInterviewsClick(ActionEvent event) throws IOException {
+        Parent heirParent = FXMLLoader.load(getClass().getResource("ViewInterviewersPage.fxml"));
+        Scene heirScene = new Scene(heirParent);
+        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(heirScene);
+        appStage.show();
     }
     @FXML
     protected void onClickAddInterviewers(){
@@ -155,15 +180,9 @@ public class Controller {
         interviewerNameTextField.clear();
     }
 
-    @FXML
-    protected void onViewInterviewsClick(ActionEvent event) throws IOException {
-        Parent heirParent = FXMLLoader.load(getClass().getResource("ViewInterviewersPage.fxml"));
-        Scene heirScene = new Scene(heirParent);
-        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setScene(heirScene);
-        appStage.show();
-    }
+    // ------------------------------------- 2 - View and manage interviewers page ------------------------------------- \\
 
+    // This is the method that gets you from the home page to job bands page
     @FXML
     protected void onViewJobBandsClick(ActionEvent event) throws IOException {
         Parent heirParent = FXMLLoader.load(getClass().getResource("ViewJobBandsPage.fxml"));
@@ -183,6 +202,7 @@ public class Controller {
         jobBandNameTextField.clear();
     }
 
+    // This is the method that gets you from the job bands page to jobs page
     @FXML
     protected void onViewJobsClick(ActionEvent event) throws IOException{
         Parent heirParent = FXMLLoader.load(getClass().getResource("ViewJobsPage.fxml"));
