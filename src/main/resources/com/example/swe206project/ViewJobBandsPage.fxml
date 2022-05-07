@@ -2,16 +2,22 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.Controller">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.Controller">
    <children>
-      <Label layoutX="175.0" layoutY="177.0" text="Job bands page">
+      <Label layoutX="175.0" layoutY="14.0" text="Job bands page">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
-      <Button layoutX="266.0" layoutY="314.0" mnemonicParsing="false" onAction="#onBackClick" text="Back" />
+      <Button mnemonicParsing="false" onAction="#onBackClick" prefHeight="58.0" prefWidth="98.0" text="Back" />
+      <ListView fx:id="jobBandList" layoutY="61.0" prefHeight="249.0" prefWidth="311.0" />
+      <Button layoutX="323.0" layoutY="115.0" mnemonicParsing="false" onAction="#onAddJobBandClick" prefHeight="39.0" prefWidth="98.0" text="Add job band" />
+      <Button layoutX="323.0" layoutY="200.0" mnemonicParsing="false" onAction="#onViewJobsClick" prefHeight="39.0" prefWidth="98.0" text="View jobs" />
+      <TextField fx:id="jobBandNameTextField" layoutX="437.0" layoutY="122.0" promptText="Job band name" />
    </children>
 </AnchorPane>

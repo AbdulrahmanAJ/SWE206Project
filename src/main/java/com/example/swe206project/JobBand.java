@@ -7,6 +7,10 @@ public class JobBand {
     ArrayList<Job> jobs = new ArrayList<Job>();
     ArrayList<Unit> units = new ArrayList<Unit>();
 
+    public JobBand(String name){
+        this.name = name;
+    }
+
     public void addJob(Job job) {
         if (!jobs.contains(job))
             jobs.add(job);
@@ -27,7 +31,15 @@ public class JobBand {
             units.remove(unit);
     }
 
+    public String getName(){
+        return this.name;
+    }
+
     public ArrayList<Unit> getUnits() {
         return units;
+    }
+
+    public String toString(){
+        return this.getName();
     }
 }

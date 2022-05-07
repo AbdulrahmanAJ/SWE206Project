@@ -26,6 +26,15 @@ public class Controller {
     private ListView<Interviewer> interviewersList;
 
     @FXML
+    private ListView<JobBand> jobBandList;
+
+    @FXML
+    private ListView<Job> jobList;
+
+    @FXML
+    private Label jobBand;
+
+    @FXML
     private Label interview;
 
     //Text Fields IDs
@@ -40,6 +49,14 @@ public class Controller {
 
     @FXML
     private TextField interviewerNameTextField;
+
+
+    @FXML
+    private TextField jobBandNameTextField;
+
+
+    @FXML
+    private TextField jobNameTextField;
 
     //Radio Buttons IDs
     @FXML
@@ -106,9 +123,10 @@ public class Controller {
     @FXML
     protected void onClickAddInterviewers(){
         String newInterviewerName = interviewerNameTextField.getText();
-        if (newInterviewerName == "")
+        if (newInterviewerName.isBlank())
             return;
-        //interviewersList.getItems().add(newInterviewerName);
+        Interviewer interviewer = new Interviewer(newInterviewerName);
+        interviewersList.getItems().add(interviewer);
         interviewerNameTextField.clear();
     }
 
@@ -131,6 +149,35 @@ public class Controller {
     }
 
     @FXML
+    protected void onAddJobBandClick(){
+        String jobBandName = jobBandNameTextField.getText();
+        if (jobBandName.isBlank())
+            return;
+        JobBand jobBand = new JobBand(jobBandName);
+        jobBandList.getItems().add(jobBand);
+        jobBandNameTextField.clear();
+    }
+
+    @FXML
+    protected void onViewJobsClick(ActionEvent event) throws IOException{
+        Parent heirParent = FXMLLoader.load(getClass().getResource("ViewJobsPage.fxml"));
+        Scene heirScene = new Scene(heirParent);
+        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(heirScene);
+        appStage.show();
+    }
+
+    @FXML
+    protected void onAddJobClick(){
+        String jobName = jobNameTextField.getText();
+        if (jobName.isBlank())
+            return;
+        Job job = new Job(jobName);
+        jobList.getItems().add(job);
+        jobNameTextField.clear();
+    }
+
+    @FXML
     protected void onViewHierarchyClick(ActionEvent event) throws IOException {
         Parent heirParent = FXMLLoader.load(getClass().getResource("ViewHierarchyPage.fxml"));
         Scene heirScene = new Scene(heirParent);
@@ -146,5 +193,16 @@ public class Controller {
         appStage.setScene(heirScene);
         appStage.show();
     }
+
+    @FXML
+    protected void OnJobBackClick(ActionEvent event) throws IOException{
+        Parent heirParent = FXMLLoader.load(getClass().getResource("ViewJobBandsPage.fxml"));
+        Scene heirScene = new Scene(heirParent);
+        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(heirScene);
+        appStage.show();
+    }
+
+
 
 }
