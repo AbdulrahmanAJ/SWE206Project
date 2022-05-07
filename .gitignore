@@ -1,6 +1,6 @@
 ### intellij
-#.idea
-
+.idea/
+SWE206Project.iml
 
 ### Java template
 # Compiled class file

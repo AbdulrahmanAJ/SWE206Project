@@ -1,5 +1,9 @@
 package com.example.swe206project;
 
+import com.example.swe206project.models.Candidate;
+import com.example.swe206project.models.Interviewer;
+import com.example.swe206project.models.Job;
+import com.example.swe206project.models.JobBand;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -118,16 +122,19 @@ public class Controller {
         }
 
     }
+
     @FXML
-    protected void onCreateInterviewClick(ActionEvent event) throws IOException{
+    protected void onCreateInterviewClick(ActionEvent event) throws IOException {
         Parent heirParent = FXMLLoader.load(getClass().getResource("ViewCreateInterviewPage.fxml"));
         Scene heirScene = new Scene(heirParent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(heirScene);
         appStage.show();
     }
+
     @FXML
     private DatePicker interviewDatePicker;
+
     @FXML
     private Label dateConfirmationLabel;
 
@@ -186,7 +193,7 @@ public class Controller {
     }
 
     @FXML
-    protected void onAddJobClick(){
+    protected void onAddJobClick() {
         String jobName = jobNameTextField.getText();
         if (jobName.isBlank())
             return;
@@ -203,8 +210,9 @@ public class Controller {
         appStage.setScene(heirScene);
         appStage.show();
     }
+
     @FXML
-    protected void onBackClick(ActionEvent event) throws IOException {
+    protected void onBackToHomeClick(ActionEvent event) throws IOException {
         Parent heirParent = FXMLLoader.load(getClass().getResource("Home.fxml"));
         Scene heirScene = new Scene(heirParent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -213,13 +221,14 @@ public class Controller {
     }
 
     @FXML
-    protected void OnJobBackClick(ActionEvent event) throws IOException{
+    protected void OnJobBackClick(ActionEvent event) throws IOException {
         Parent heirParent = FXMLLoader.load(getClass().getResource("ViewJobBandsPage.fxml"));
         Scene heirScene = new Scene(heirParent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(heirScene);
         appStage.show();
     }
+
     @FXML
     protected void OnInterviewBackClick(ActionEvent event) throws IOException{
         Parent heirParent = FXMLLoader.load(getClass().getResource("ViewCandidatesPage.fxml"));
@@ -228,7 +237,4 @@ public class Controller {
         appStage.setScene(heirScene);
         appStage.show();
     }
-
-
-
 }

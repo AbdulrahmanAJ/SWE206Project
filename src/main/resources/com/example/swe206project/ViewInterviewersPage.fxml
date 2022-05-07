@@ -23,7 +23,7 @@
          <top>
             <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
                <children>
-                  <Button mnemonicParsing="false" onAction="#onBackClick" prefHeight="55.0" prefWidth="110.0" text="Back" />
+                  <Button mnemonicParsing="false" onAction="#onBackToHomeClick" prefHeight="55.0" prefWidth="110.0" text="Back" />
                   <Label alignment="CENTER" prefHeight="106.0" prefWidth="368.0" text="Interviewers Page" textAlignment="CENTER">
                      <font>
                         <Font size="39.0" />
