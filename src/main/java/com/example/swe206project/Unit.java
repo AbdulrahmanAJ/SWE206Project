@@ -62,4 +62,8 @@ public class Unit {
         if (level < 2)
             level++;
     }
+
+    public String toString(){
+        return this.name;
+    }
 }
