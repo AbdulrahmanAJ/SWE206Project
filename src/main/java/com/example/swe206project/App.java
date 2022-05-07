@@ -15,6 +15,7 @@ public class App extends Application {
         stage.setTitle("App");
         stage.setScene(scene);
         stage.show();
+        System.out.println("The App is now running...");
         System.out.println("java version: " +   System.getProperty("java.version"  ));
         System.out.println("javafx.version: " + System.getProperty("javafx.version"));
     }

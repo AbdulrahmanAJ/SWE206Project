@@ -6,13 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Controller {
@@ -121,6 +119,26 @@ public class Controller {
 
     }
     @FXML
+    protected void onCreateInterviewClick(ActionEvent event) throws IOException{
+        Parent heirParent = FXMLLoader.load(getClass().getResource("ViewCreateInterviewPage.fxml"));
+        Scene heirScene = new Scene(heirParent);
+        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(heirScene);
+        appStage.show();
+    }
+    @FXML
+    private DatePicker interviewDatePicker;
+    @FXML
+    private Label dateConfirmationLabel;
+
+    @FXML
+    public void getInterviewDate(ActionEvent event){
+        //Getting the date from the date picker
+        LocalDate interviewDate = interviewDatePicker.getValue();
+        //Setting the confirmation message
+        dateConfirmationLabel.setText("Interview with (Interviewer name) On:\n " + interviewDate);
+    }
+    @FXML
     protected void onClickAddInterviewers(){
         String newInterviewerName = interviewerNameTextField.getText();
         if (newInterviewerName.isBlank())
@@ -197,6 +215,14 @@ public class Controller {
     @FXML
     protected void OnJobBackClick(ActionEvent event) throws IOException{
         Parent heirParent = FXMLLoader.load(getClass().getResource("ViewJobBandsPage.fxml"));
+        Scene heirScene = new Scene(heirParent);
+        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(heirScene);
+        appStage.show();
+    }
+    @FXML
+    protected void OnInterviewBackClick(ActionEvent event) throws IOException{
+        Parent heirParent = FXMLLoader.load(getClass().getResource("ViewCandidatesPage.fxml"));
         Scene heirScene = new Scene(heirParent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(heirScene);

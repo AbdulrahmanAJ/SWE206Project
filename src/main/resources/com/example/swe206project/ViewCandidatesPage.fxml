@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.Controller">
+<AnchorPane prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.Controller">
    <children>
       <BorderPane prefHeight="600.0" prefWidth="800.0">
          <left>
@@ -38,7 +38,7 @@
                <children>
                   <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onClickAddCandidate" prefHeight="99.0" prefWidth="147.0" text="Add a new candidate" textAlignment="CENTER" wrapText="true" />
                   <Pane prefHeight="118.0" prefWidth="642.0" />
-                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" prefHeight="100.0" prefWidth="140.0" text="Create Interview" textAlignment="CENTER" wrapText="true">
+                  <Button alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onCreateInterviewClick" prefHeight="100.0" prefWidth="140.0" text="Create Interview" textAlignment="CENTER" wrapText="true">
                      <HBox.margin>
                         <Insets />
                      </HBox.margin>

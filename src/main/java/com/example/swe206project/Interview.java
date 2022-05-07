@@ -2,7 +2,7 @@ package com.example.swe206project;
 
 import java.util.Date;
 
-public class Interview {
+public class  Interview {
     Candidate candidate;
     Interviewer interviewer;
     Date time;
