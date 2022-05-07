@@ -41,3 +41,5 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 
+!/SWE206Project.iml
+!/.idea/
