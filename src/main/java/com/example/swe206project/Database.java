@@ -9,10 +9,10 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class Database implements Serializable {
-    ArrayList<Interviewer> interviewers;
-    ArrayList<Candidate> candidates;
-    ArrayList<JobBand> jobBands;
-    Hierarchy hierarchy;
+    public ArrayList<Interviewer> interviewers;
+    public ArrayList<Candidate> candidates;
+    public ArrayList<JobBand> jobBands;
+    public Hierarchy hierarchy;
 
     public Database(int i) {
         this(new ArrayList<>(), new ArrayList<>(), new ArrayList<>(), new Hierarchy());

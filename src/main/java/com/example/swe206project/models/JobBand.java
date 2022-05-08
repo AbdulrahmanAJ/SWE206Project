@@ -3,7 +3,8 @@ package com.example.swe206project.models;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-public class JobBand implements Serializable {
+public class
+JobBand implements Serializable {
     String name;
     ArrayList<Job> jobs = new ArrayList<Job>();
     ArrayList<Unit> units = new ArrayList<Unit>();
@@ -13,8 +14,9 @@ public class JobBand implements Serializable {
     }
 
     public void addJob(Job job) {
-        if (!jobs.contains(job))
+        if (!jobs.contains(job)) {
             jobs.add(job);
+        }
     }
 
     public void removeJob(Job job) {
@@ -42,5 +44,9 @@ public class JobBand implements Serializable {
 
     public String toString(){
         return this.getName();
+    }
+
+    public ArrayList<Job> getJobs() {
+        return jobs;
     }
 }

@@ -39,7 +39,7 @@ public class Unit implements Serializable {
             jobBands.add(jobBand);
     }
 
-    public void unlinkUnit(JobBand jobBand) {
+    public void unlinkJobBand(JobBand jobBand) {
         if (jobBands.contains(jobBand))
             jobBands.remove(jobBand);
     }

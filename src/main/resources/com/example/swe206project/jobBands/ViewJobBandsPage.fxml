@@ -14,10 +14,12 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Button mnemonicParsing="false" onAction="#onBackToHomeClick" prefHeight="58.0" prefWidth="98.0" text="Back" />
-      <ListView fx:id="jobBandList" layoutY="61.0" prefHeight="249.0" prefWidth="311.0" />
-      <Button layoutX="323.0" layoutY="115.0" mnemonicParsing="false" onAction="#onAddJobBandClick" prefHeight="39.0" prefWidth="98.0" text="Add job band" />
-      <Button layoutX="323.0" layoutY="200.0" mnemonicParsing="false" onAction="#onViewJobsClick" prefHeight="39.0" prefWidth="98.0" text="View jobs" />
-      <TextField fx:id="jobBandNameTextField" layoutX="437.0" layoutY="122.0" promptText="Job band name" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#onBackToHomeClick" prefHeight="58.0" prefWidth="98.0" text="Back" />
+      <ListView fx:id="jobBandListView" layoutX="20.0" layoutY="96.0" prefHeight="249.0" prefWidth="409.0" />
+      <Button layoutX="439.0" layoutY="271.0" mnemonicParsing="false" onAction="#onAddJobBandClick" prefHeight="39.0" prefWidth="111.0" text="Add job band" />
+      <Button layoutX="439.0" layoutY="96.0" mnemonicParsing="false" onAction="#onViewJobsClick" prefHeight="39.0" prefWidth="111.0" text="View jobs" />
+      <TextField fx:id="jobBandNameTextField" layoutX="439.0" layoutY="318.0" prefHeight="25.0" prefWidth="155.0" promptText="Job band name" />
+      <Button layoutX="439.0" layoutY="221.0" mnemonicParsing="false" onAction="#onDeleteJobBandClick" prefHeight="39.0" prefWidth="111.0" text="Delete job band" />
+      <Button layoutX="439.0" layoutY="144.0" mnemonicParsing="false" onAction="#onViewLinkedUnitsClick" prefHeight="39.0" prefWidth="111.0" text="view linked units" />
    </children>
 </AnchorPane>

@@ -1,6 +1,7 @@
 package com.example.swe206project;
 
 import com.example.swe206project.models.Interviewer;
+import com.example.swe206project.models.Unit;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -9,11 +10,11 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class App extends Application {
+    // set the database
     public static Database database;
 
     @Override
     public void start(Stage stage) throws IOException {
-        // set the database
         database = new Database();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Home.fxml"));

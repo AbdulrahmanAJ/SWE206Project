@@ -46,12 +46,15 @@ public class HomeController {
     // This is the method that gets you from the home page to job bands page
     @FXML
     void onViewJobBandsClick(ActionEvent event) throws IOException {
-//        System.out.println();
-        Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("jobBands/ViewJobBandsPage.fxml")));
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("jobBands/ViewJobBandsPage.fxml")));
+        Parent heirParent = loader.load();
         Scene heirScene = new Scene(heirParent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(heirScene);
         appStage.show();
+
+        // we will get the controller to set the values
+        ((JobBandsController) loader.getController()).loadJobBands();
     }
 
 

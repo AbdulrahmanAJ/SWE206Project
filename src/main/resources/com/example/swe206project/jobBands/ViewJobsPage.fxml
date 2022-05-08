@@ -7,22 +7,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.controllers.JobBandsController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.controllers.JobsController">
    <children>
       <Label alignment="TOP_CENTER" layoutX="205.0" layoutY="14.0" prefHeight="43.0" prefWidth="190.0" text="Jobs Page">
          <font>
             <Font size="32.0" />
          </font>
       </Label>
-      <Label fx:id="jobBand" alignment="TOP_CENTER" layoutX="234.0" layoutY="68.0" prefHeight="7.0" prefWidth="133.0" text="Current Job band:">
+      <Label fx:id="jobBand" alignment="TOP_CENTER" layoutX="39.0" layoutY="96.0" prefHeight="7.0" prefWidth="133.0" text="Job band jobs:">
          <font>
             <Font size="13.0" />
          </font>
       </Label>
-      <ListView fx:id="jobList" layoutX="172.0" layoutY="87.0" prefHeight="242.0" prefWidth="256.0" />
-      <Button layoutX="172.0" layoutY="339.0" mnemonicParsing="false" onAction="#onAddJobClick" prefHeight="47.0" prefWidth="96.0" text="Add job" />
-      <Button mnemonicParsing="false" onAction="#OnJobBackClick" prefHeight="59.0" prefWidth="96.0" text="Back" />
-      <TextField fx:id="jobNameTextField" layoutX="279.0" layoutY="350.0" promptText="Job name" />
+      <ListView fx:id="jobsListView" layoutX="39.0" layoutY="113.0" prefHeight="242.0" prefWidth="326.0" />
+      <Button layoutX="378.0" layoutY="220.0" mnemonicParsing="false" onAction="#onAddJobClick" prefHeight="47.0" prefWidth="96.0" text="Add job" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#OnJobBackClick" prefHeight="59.0" prefWidth="96.0" text="Back" />
+      <TextField fx:id="jobNameTextField" layoutX="378.0" layoutY="279.0" promptText="Job name" />
+      <Button layoutX="378.0" layoutY="159.0" mnemonicParsing="false" onAction="#onDeleteJobClick" prefHeight="47.0" prefWidth="96.0" text="Delete Job" />
    </children>
 </AnchorPane>

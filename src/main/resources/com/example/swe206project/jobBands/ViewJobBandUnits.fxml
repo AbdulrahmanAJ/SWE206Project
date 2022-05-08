@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.controllers.JobBandUnitsController">
+   <children>
+      <Label alignment="TOP_CENTER" layoutX="132.0" layoutY="32.0" prefHeight="43.0" prefWidth="337.0" text="Job Band Units Page">
+         <font>
+            <Font size="32.0" />
+         </font>
+      </Label>
+      <Button layoutX="24.0" layoutY="24.0" mnemonicParsing="false" onAction="#OnJobBackClick" prefHeight="59.0" prefWidth="96.0" text="Back" />
+      <ListView fx:id="linkedUnitsListView" layoutX="48.0" layoutY="135.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="48.0" layoutY="112.0" prefHeight="17.0" prefWidth="67.0" text="linked Units:" />
+      <ListView fx:id="unlinkedUnitsListView" layoutX="334.0" layoutY="135.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="334.0" layoutY="112.0" prefHeight="17.0" prefWidth="86.0" text="unlinked Units:" />
+      <Button layoutX="275.0" layoutY="205.0" mnemonicParsing="false" onAction="#onUnlinkUnitClick" text="&gt;" />
+      <Button layoutX="275.0" layoutY="240.0" mnemonicParsing="false" onAction="#onLinkUnitClick" text="&lt;" />
+   </children>
+</AnchorPane>
