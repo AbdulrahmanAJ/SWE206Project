@@ -1,6 +1,6 @@
 ### intellij
-#.idea
-
+.idea/
+SWE206Project.iml
 
 ### Java template
 # Compiled class file
@@ -40,3 +40,6 @@ buildNumber.properties
 # https://github.com/takari/maven-wrapper#usage-without-binary-jar
 .mvn/wrapper/maven-wrapper.jar
 
+
+!/SWE206Project.iml
+!/.idea/

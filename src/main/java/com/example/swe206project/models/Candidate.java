@@ -1,9 +1,10 @@
-package com.example.swe206project;
+package com.example.swe206project.models;
 
 import java.io.File;
+import java.io.Serializable;
 import java.util.Stack;
 
-public class Candidate {
+public class Candidate implements Serializable {
     String nationalID;
     String gender;
     String name;
