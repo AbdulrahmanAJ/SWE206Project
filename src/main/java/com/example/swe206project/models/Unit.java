@@ -11,8 +11,12 @@ public class Unit implements Serializable {
     Unit father;
 
     public Unit(String name, int level) {
+        this(name, level, null);
+    }
+    public Unit(String name, int level, Unit father){
         this.name = name;
         this.level = level;
+        this.father = father;
     }
 
     public String getName() {
