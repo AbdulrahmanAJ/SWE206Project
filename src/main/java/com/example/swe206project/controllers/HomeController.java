@@ -1,6 +1,7 @@
 package com.example.swe206project.controllers;
 
 import com.example.swe206project.App;
+import com.example.swe206project.controllers.jobBands.JobBandsController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -45,7 +46,7 @@ public class HomeController {
 
     // This is the method that gets you from the home page to job bands page
     @FXML
-    void onViewJobBandsClick(ActionEvent event) throws IOException {
+    public void onViewJobBandsClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("jobBands/ViewJobBandsPage.fxml")));
         Parent heirParent = loader.load();
         Scene heirScene = new Scene(heirParent);

@@ -1,28 +1,20 @@
-package com.example.swe206project.controllers;
+package com.example.swe206project.controllers.jobBands;
 
 import com.example.swe206project.App;
-import com.example.swe206project.models.Job;
 import com.example.swe206project.models.JobBand;
 import com.example.swe206project.models.Unit;
 import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.input.ContextMenuEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Objects;
 
 public class JobBandsController {
@@ -34,7 +26,7 @@ public class JobBandsController {
     private ListView<JobBand> jobBandListView;
 
 
-    void loadJobBands() {
+    public void loadJobBands() {
         jobBandListView.setItems(FXCollections.observableArrayList(App.database.jobBands));
     }
 

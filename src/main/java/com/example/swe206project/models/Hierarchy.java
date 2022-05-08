@@ -1,5 +1,6 @@
 package com.example.swe206project.models;
 
+import java.io.Serial;
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -55,8 +56,6 @@ public class Hierarchy implements Serializable {
 
     public ArrayList<Unit> getAllUnits() {
         ArrayList<Unit> allUnits = new ArrayList<>();
-
-        allUnits.addAll(divisions);
 
         for (Unit division: divisions) {
             // add the divisions

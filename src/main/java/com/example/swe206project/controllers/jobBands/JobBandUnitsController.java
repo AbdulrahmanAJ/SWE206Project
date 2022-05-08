@@ -1,6 +1,7 @@
-package com.example.swe206project.controllers;
+package com.example.swe206project.controllers.jobBands;
 
 import com.example.swe206project.App;
+import com.example.swe206project.controllers.HomeController;
 import com.example.swe206project.models.JobBand;
 import com.example.swe206project.models.Unit;
 import javafx.collections.FXCollections;

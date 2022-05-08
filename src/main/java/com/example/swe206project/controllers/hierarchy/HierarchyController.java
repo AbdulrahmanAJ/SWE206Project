@@ -1,4 +1,4 @@
-package com.example.swe206project.controllers;
+package com.example.swe206project.controllers.hierarchy;
 
 import com.example.swe206project.App;
 import javafx.event.ActionEvent;

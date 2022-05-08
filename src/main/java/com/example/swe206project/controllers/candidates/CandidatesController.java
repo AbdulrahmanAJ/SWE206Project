@@ -1,4 +1,4 @@
-package com.example.swe206project.controllers;
+package com.example.swe206project.controllers.candidates;
 
 import com.example.swe206project.App;
 import com.example.swe206project.models.Candidate;

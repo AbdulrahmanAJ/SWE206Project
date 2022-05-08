@@ -10,6 +10,11 @@ public class Unit implements Serializable {
     ArrayList<Unit> children = new ArrayList<Unit>();
     Unit father;
 
+    public Unit(String name, int level) {
+        this.name = name;
+        this.level = level;
+    }
+
     public String getName() {
         return name;
     }
