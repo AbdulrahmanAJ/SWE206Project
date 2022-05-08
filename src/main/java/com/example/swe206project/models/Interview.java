@@ -1,8 +1,9 @@
 package com.example.swe206project.models;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class  Interview {
+public class  Interview implements Serializable {
     Candidate candidate;
     Interviewer interviewer;
     Date time;

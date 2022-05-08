@@ -1,5 +1,7 @@
 package com.example.swe206project.models;
 
-public class Hierarchy {
+import java.io.Serializable;
+
+public class Hierarchy implements Serializable {
 
 }

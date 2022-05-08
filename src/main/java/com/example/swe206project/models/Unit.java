@@ -1,8 +1,9 @@
 package com.example.swe206project.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Unit {
+public class Unit implements Serializable {
     String name;
     int level; // 0 = division, 1 = directorate, 2 = department
     ArrayList<JobBand> jobBands = new ArrayList<JobBand>();

@@ -1,6 +1,8 @@
 package com.example.swe206project.models;
 
-public class JobOffer {
+import java.io.Serializable;
+
+public class JobOffer implements Serializable {
     Candidate candidate;
     double expectedSalary;
     double housingBenefit;

@@ -68,14 +68,16 @@ public class CandidatesController {
     protected void onCandidateListClick(){
         Candidate candidate = candidatesList.getSelectionModel().getSelectedItem();
 
-        nameTextField.setText(candidate.getName());
-        idTextField.setText(candidate.getNationalID());
-        eduTextField.setText(candidate.getEducationLevel());
-        experienceTextField.setText(candidate.getYearsOfExperience() + "");
-        if (candidate.getGender().equalsIgnoreCase("male"))
-            maleRadio.setSelected(true);
-        if (candidate.getGender().equalsIgnoreCase("female"))
-            femaleRadio.setSelected(true);
+        if (candidate != null) {
+            nameTextField.setText(candidate.getName());
+            idTextField.setText(candidate.getNationalID());
+            eduTextField.setText(candidate.getEducationLevel());
+            experienceTextField.setText(candidate.getYearsOfExperience() + "");
+            if (candidate.getGender().equalsIgnoreCase("male"))
+                maleRadio.setSelected(true);
+            if (candidate.getGender().equalsIgnoreCase("female"))
+                femaleRadio.setSelected(true);
+        }
     }
 
     // This is what happens when you click add candidate a new candidate.

@@ -1,8 +1,9 @@
 package com.example.swe206project.models;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Interviewer {
+public class Interviewer implements Serializable {
 
     String name;
     ArrayList<Interview> interviews = new ArrayList<Interview>();
