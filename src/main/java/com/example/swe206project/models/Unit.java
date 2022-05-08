@@ -45,8 +45,7 @@ public class Unit implements Serializable {
     }
 
     public void unlinkJobBand(JobBand jobBand) {
-        if (jobBands.contains(jobBand))
-            jobBands.remove(jobBand);
+        jobBands.remove(jobBand);
     }
 
     public void addChild(Unit child) {
@@ -55,8 +54,7 @@ public class Unit implements Serializable {
     }
 
     public void removeChild(Unit child) {
-        if (children.contains(child))
-            children.remove(child);
+        children.remove(child);
     }
 
     public void decreaseLevel() {

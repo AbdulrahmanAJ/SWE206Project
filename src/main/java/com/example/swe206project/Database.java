@@ -38,7 +38,6 @@ public class Database implements Serializable {
         } catch (IOException | ClassNotFoundException e) {
             System.out.println(e.getMessage());
         }
-
     }
 
     public void saveData() {

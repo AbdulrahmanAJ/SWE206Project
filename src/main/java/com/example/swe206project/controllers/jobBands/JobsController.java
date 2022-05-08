@@ -7,9 +7,15 @@ import com.example.swe206project.models.JobBand;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 
@@ -38,6 +44,7 @@ public class JobsController {
             jobsListView.setItems(FXCollections.observableList(this.selectedJobBand.getJobs()));
         }
         jobNameTextField.clear();
+
     }
 
     @FXML

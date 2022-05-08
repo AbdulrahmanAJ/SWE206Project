@@ -65,13 +65,12 @@ public class JobBandsController {
     @FXML
     void onAddJobBandClick(ActionEvent event) {
         String jobBandName = jobBandNameTextField.getText();
-        if (jobBandName.isBlank()) {
-            return;
+        if (! jobBandName.isBlank()) {
+            JobBand newJobBand = new JobBand(jobBandName);
+            App.database.jobBands.add(newJobBand);
+            jobBandListView.getItems().add(newJobBand);
+            jobBandNameTextField.clear();
         }
-        JobBand newJobBand = new JobBand(jobBandName);
-        App.database.jobBands.add(newJobBand);
-        jobBandListView.getItems().add(newJobBand);
-        jobBandNameTextField.clear();
     }
 
     @FXML

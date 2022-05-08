@@ -7,26 +7,28 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="424.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.controllers.candidates.CandidatesController">
-   <children>
-      <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#OnInterviewBackClick" prefHeight="64.0" prefWidth="86.0" text="Back" textAlignment="CENTER">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Button>
-      <Label layoutX="212.0" layoutY="42.0" text="Interviewers">
-         <font>
-            <Font size="18.0" />
-         </font>
-      </Label>
-      <Label layoutX="90.0" layoutY="371.0" prefHeight="12.0" prefWidth="46.0" text="Date:">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </Label>
-      <DatePicker fx:id="interviewDatePicker" layoutX="158.0" layoutY="379.0" onAction="#getInterviewDate" />
-      <Button layoutX="416.0" layoutY="219.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0" text="Confirm interview" />
-      <Label fx:id="dateConfirmationLabel" alignment="CENTER" layoutX="416.0" layoutY="120.0" prefHeight="86.0" prefWidth="122.0" text="-" textAlignment="CENTER" wrapText="true" />
-      <ListView layoutX="160.0" layoutY="106.0" prefHeight="200.0" prefWidth="200.0" />
-   </children>
+<AnchorPane prefHeight="424.0" prefWidth="545.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.example.swe206project.controllers.candidates.CandidatesController">
+   <Button layoutX="10.0" layoutY="10.0" mnemonicParsing="false" onAction="#OnInterviewBackClick" prefHeight="64.0"
+           prefWidth="86.0" text="Back" textAlignment="CENTER">
+      <font>
+         <Font size="18.0"/>
+      </font>
+   </Button>
+   <Label layoutX="212.0" layoutY="42.0" text="Interviewers">
+      <font>
+         <Font size="18.0"/>
+      </font>
+   </Label>
+   <Label layoutX="90.0" layoutY="371.0" prefHeight="12.0" prefWidth="46.0" text="Date:">
+      <font>
+         <Font size="15.0"/>
+      </font>
+   </Label>
+   <DatePicker fx:id="interviewDatePicker" layoutX="158.0" layoutY="379.0" onAction="#getInterviewDate"/>
+   <Button layoutX="416.0" layoutY="219.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="122.0"
+           text="Confirm interview"/>
+   <Label fx:id="dateConfirmationLabel" alignment="CENTER" layoutX="416.0" layoutY="120.0" prefHeight="86.0"
+          prefWidth="122.0" text="-" textAlignment="CENTER" wrapText="true"/>
+   <ListView layoutX="160.0" layoutY="106.0" prefHeight="200.0" prefWidth="200.0"/>
 </AnchorPane>

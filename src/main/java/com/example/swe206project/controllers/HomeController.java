@@ -1,6 +1,7 @@
 package com.example.swe206project.controllers;
 
 import com.example.swe206project.App;
+import com.example.swe206project.controllers.hierarchy.HierarchyController;
 import com.example.swe206project.controllers.jobBands.JobBandsController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -17,7 +18,7 @@ public class HomeController {
 
     // This is the method that gets you from the home page to candidates page
     @FXML
-    void onViewCandidatesClick(ActionEvent event) throws IOException {
+    public void onViewCandidatesClick(ActionEvent event) throws IOException {
         Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("candidates/ViewCandidatesPage.fxml")));
         Scene heirScene = new Scene(heirParent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -26,17 +27,21 @@ public class HomeController {
     }
 
     @FXML
-    void onViewHierarchyClick(ActionEvent event) throws IOException {
-        Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("hierarchy/ViewHierarchyPage.fxml")));
+    public void onViewHierarchyClick(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("hierarchy/ViewHierarchyPage.fxml")));
+        Parent heirParent = loader.load();
         Scene heirScene = new Scene(heirParent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(heirScene);
         appStage.show();
+
+        // we will get the controller to set the values
+        ((HierarchyController) loader.getController()).loadHierarchy();
     }
 
     // This is the method that gets you from the home page to interviewers page
     @FXML
-    void onViewInterviewsClick(ActionEvent event) throws IOException {
+    public void onViewInterviewsClick(ActionEvent event) throws IOException {
         Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("interviewers/ViewInterviewersPage.fxml")));
         Scene heirScene = new Scene(heirParent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -57,6 +62,4 @@ public class HomeController {
         // we will get the controller to set the values
         ((JobBandsController) loader.getController()).loadJobBands();
     }
-
-
 }
