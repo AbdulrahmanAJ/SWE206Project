@@ -2,6 +2,7 @@ package com.example.swe206project.controllers;
 
 import com.example.swe206project.App;
 import com.example.swe206project.controllers.hierarchy.HierarchyController;
+import com.example.swe206project.controllers.interviewers.InterviewersController;
 import com.example.swe206project.controllers.jobBands.JobBandsController;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -29,10 +30,11 @@ public class HomeController {
     @FXML
     public void onViewHierarchyClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("hierarchy/ViewHierarchyPage.fxml")));
-        Parent heirParent = loader.load();
-        Scene heirScene = new Scene(heirParent);
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        scene.setUserData(loader);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setScene(heirScene);
+        appStage.setScene(scene);
         appStage.show();
 
         // we will get the controller to set the values
@@ -42,21 +44,25 @@ public class HomeController {
     // This is the method that gets you from the home page to interviewers page
     @FXML
     public void onViewInterviewsClick(ActionEvent event) throws IOException {
-        Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("interviewers/ViewInterviewersPage.fxml")));
-        Scene heirScene = new Scene(heirParent);
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("interviewers/ViewInterviewersPage.fxml")));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setScene(heirScene);
+        appStage.setScene(scene);
         appStage.show();
+
+        ((InterviewersController) loader.getController()).loadInterviewers();
     }
 
     // This is the method that gets you from the home page to job bands page
     @FXML
     public void onViewJobBandsClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("jobBands/ViewJobBandsPage.fxml")));
-        Parent heirParent = loader.load();
-        Scene heirScene = new Scene(heirParent);
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setScene(heirScene);
+        appStage.setScene(scene);
         appStage.show();
 
         // we will get the controller to set the values
