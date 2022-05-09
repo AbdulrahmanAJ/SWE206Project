@@ -140,7 +140,7 @@ public class HierarchyController {
         Unit selectedDepartment = departmentsListView.getSelectionModel().getSelectedItem();
 
         if (selectedDepartment != null ){
-            selectedDepartment.getFather().getChildren().remove(selectedDepartment);
+            App.database.hierarchy.deleteUnit(selectedDepartment);
             loadHierarchy();
         }
     }
@@ -150,7 +150,7 @@ public class HierarchyController {
         Unit selectedDirectorate = directoratesListView.getSelectionModel().getSelectedItem();
 
         if (selectedDirectorate != null) {
-            selectedDirectorate.getFather().getChildren().remove(selectedDirectorate);
+            App.database.hierarchy.deleteUnit(selectedDirectorate);
             loadHierarchy();
         }
     }
@@ -159,7 +159,7 @@ public class HierarchyController {
     void onDeleteDivisionClick(ActionEvent event) {
         Unit selectedDivision = divisionsListView.getSelectionModel().getSelectedItem();
         if (selectedDivision != null) {
-            App.database.hierarchy.divisions.remove(selectedDivision);
+            App.database.hierarchy.deleteUnit(selectedDivision);
             loadHierarchy();
         }
     }

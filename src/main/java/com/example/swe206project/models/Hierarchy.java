@@ -75,4 +75,32 @@ public class Hierarchy implements Serializable {
 
         return allUnits;
     }
+
+    public void deleteUnit(Unit unit) {
+        // unlink with all job bands
+        unit.unlinkAllJobBands();
+
+        if (unit.getLevel() == 0) {
+            divisions.remove(unit); // remove the division from the hierarchy class
+            ArrayList<Unit> directorates = unit.getChildren();
+            for (Unit directorate: directorates) {
+                directorate.unlinkAllJobBands();
+                for (Unit department: directorate.getChildren()) {
+                    department.unlinkAllJobBands();
+                }
+            }
+        }
+        if (unit.getLevel() == 1) {
+            unit.getFather().getChildren().remove(unit);
+            ArrayList<Unit> departments = unit.getChildren();
+            for (Unit department: departments) {
+                department.unlinkAllJobBands();
+            }
+        }
+        if (unit.getLevel() == 2) {
+            unit.getFather().getChildren().remove(unit);
+        }
+    }
+
+
 }
