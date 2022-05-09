@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class JobBandUnitsController {
-    JobBand selectedJobBand;
+    private JobBand selectedJobBand;
 
     @FXML
     private ListView<Unit> linkedUnitsListView;

@@ -8,50 +8,55 @@ public class Hierarchy implements Serializable {
     public ArrayList<Unit> divisions = new ArrayList<Unit>();
 
     public void upgradeUnit(Unit unit) {
-        if (unit.getLevel() == 0) // Cannot upgrade a division
-            return;
-        else if (unit.getLevel() == 1) { // Upgrading a directorate
-            unit.setFather(null); // Will be null
-            unit.decreaseLevel();
-            for (Unit department :
-                    unit.getChildren()) {
-                department.decreaseLevel();
+        if (unit.getLevel() != 0) {
+            unit.getFather().getChildren().remove(unit); // remove the unit from the old father children
+            unit.setFather(unit.getFather().getFather()); // connect the unit to the new father
+            if (unit.getFather() != null) {
+                unit.getFather().getChildren().add(unit); // connect the new father to the new unit
             }
-        }
-        else { // Upgrading a department
-            unit.setFather(unit.getFather().getFather());
             unit.decreaseLevel();
+
+            // increase the level of all the children
+            for (Unit unitChild : unit.getChildren()) {
+                unitChild.decreaseLevel();
+            }
+
+            if (unit.getLevel() == 0) { // if the unit became a division
+                divisions.add(unit);
+            }
         }
     }
 
-    public void downgradeUnit(Unit unit, Unit newFather) {
-        if (unit.getLevel() == 2)
-            return;
-        else if (unit.getLevel() == 1) {
-            if (unit.getChildren().isEmpty()) {
+    public String downgradeUnit(Unit unit, Unit newFather) {
+        if (unit.getLevel() == 1) { //if the unit is directorate
+            if (unit.getChildren().size() == 0) { // if the directorate doesn't have children
                 unit.increaseLevel();
+                unit.getFather().children.remove(unit);
                 unit.setFather(newFather);
+                newFather.children.add(unit);
+                return "Done";
             }
+            return "Error: The selected directorate to downgrade have departments.";
         }
-        else {
-            if (unit.getChildren().isEmpty()) {
-                unit.setFather(newFather);
-                unit.increaseLevel();
-            }
-            else {
-                for (Unit directorate :
-                        unit.getChildren()) {
-                    if (!directorate.getChildren().isEmpty())
-                        return;
-                }
-                unit.setFather(newFather);
-                unit.increaseLevel();
-                for (Unit directorate :
-                        unit.getChildren()) {
-                    directorate.increaseLevel();
+
+        if (unit.getLevel() == 0) { //if the unit is division
+            // if one of the division directorates has a department an error will appear
+            for (Unit directorate: unit.getChildren()) {
+                if (directorate.getChildren().size() != 0) { // if the directorate doesn't have children
+                    return "Error: one of directorates of the selected division to downgrade has a department.";
                 }
             }
+
+            unit.increaseLevel();
+            unit.setFather(newFather);
+            newFather.children.add(unit);
+            for (Unit directorate: unit.getChildren()) {
+                directorate.increaseLevel();
+            }
+            divisions.remove(unit);
+            return "Done";
         }
+        return "Error: Department cant be downgraded.";
     }
 
     public ArrayList<Unit> getAllUnits() {

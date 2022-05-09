@@ -17,8 +17,8 @@
    <ListView fx:id="divisionsListView" layoutX="47.0" layoutY="107.0" onMouseClicked="#onDivisionsListViewClick" prefHeight="175.0" prefWidth="151.0" />
    <ListView fx:id="directoratesListView" layoutX="225.0" layoutY="107.0" onMouseClicked="#onDirectoratesListViewClick" prefHeight="175.0" prefWidth="151.0" />
    <ListView fx:id="departmentsListView" layoutX="410.0" layoutY="107.0" onMouseClicked="#onDepartmentsListViewClick" prefHeight="175.0" prefWidth="151.0" />
-   <Label layoutX="410.0" layoutY="69.0" prefHeight="43.0" prefWidth="130.0" text="Directorate's departments:" wrapText="true" />
-   <Label layoutX="225.0" layoutY="69.0" prefHeight="43.0" prefWidth="130.0" text="Division's directorates:" wrapText="true" />
+   <Label fx:id="departmentsLabel" layoutX="410.0" layoutY="69.0" prefHeight="43.0" prefWidth="130.0" text="Directorate's departments:" wrapText="true" />
+   <Label fx:id="directoratesLabel" layoutX="225.0" layoutY="69.0" prefHeight="43.0" prefWidth="130.0" text="Division's directorates:" wrapText="true" />
    <Label layoutX="47.0" layoutY="70.0" prefHeight="43.0" prefWidth="130.0" text="Divisions:" wrapText="true" />
    <Button layoutX="51.0" layoutY="354.0" mnemonicParsing="false" onAction="#onAddDivisionClick" prefHeight="25.0" prefWidth="58.0" text="Add" />
    <TextField fx:id="divisionTextField" layoutX="49.0" layoutY="324.0" prefWidth="151.0" />

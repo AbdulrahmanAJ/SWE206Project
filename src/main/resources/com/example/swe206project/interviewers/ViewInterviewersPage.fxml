@@ -5,35 +5,18 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="470.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.example.swe206project.controllers.interviewers.InterviewersController">
-   <BorderPane prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0"
-               AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-      <bottom>
-         <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" spacing="20.0" BorderPane.alignment="CENTER">
-            <Button mnemonicParsing="false" onAction="#onClickAddInterviewers" prefHeight="66.0" prefWidth="149.0"
-                    text="Add a new Interviewer"/>
-            <TextField fx:id="interviewerNameTextField" promptText="Interviewer name"/>
-         </HBox>
-      </bottom>
-      <top>
-         <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-            <Button mnemonicParsing="false" onAction="#onBackToHomeClick" prefHeight="55.0" prefWidth="110.0"
-                    text="Back"/>
-            <Label alignment="CENTER" prefHeight="106.0" prefWidth="368.0" text="Interviewers Page"
-                   textAlignment="CENTER">
-               <font>
-                  <Font size="39.0"/>
-               </font>
-            </Label>
-         </HBox>
-      </top>
-      <center>
-         <ListView fx:id="interviewersList" prefHeight="220.0" prefWidth="475.0" BorderPane.alignment="CENTER"/>
-      </center>
-   </BorderPane>
+<AnchorPane prefHeight="470.0" prefWidth="540.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.controllers.interviewers.InterviewersController">
+   <children>
+      <Label layoutX="130.0" layoutY="14.0" text="Interviewers">
+         <font>
+            <Font size="55.0" />
+         </font>
+      </Label>
+      <Button layoutX="20.0" layoutY="27.0" mnemonicParsing="false" onAction="#onBackToHomeClick" prefHeight="42.0" prefWidth="95.0" text="Back" />
+      <ListView fx:id="interviewersListView" layoutX="46.0" layoutY="106.0" prefHeight="294.0" prefWidth="298.0" />
+      <Button layoutX="393.0" layoutY="294.0" mnemonicParsing="false" onAction="#onAddInterviewerClick" prefHeight="26.0" prefWidth="72.0" text="Add" />
+      <TextField fx:id="interviewerNameTextField" layoutX="349.0" layoutY="253.0" promptText="Interviewer Name" />
+   </children>
 </AnchorPane>

@@ -1,17 +1,22 @@
 package com.example.swe206project.controllers.hierarchy;
 
 import com.example.swe206project.App;
+import com.example.swe206project.controllers.jobBands.JobsController;
 import com.example.swe206project.models.Unit;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -22,27 +27,67 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class HierarchyController {
+    private Unit lastSelectedUnit;
     @FXML
     private TextField departmentTextField;
-
     @FXML
     private ListView<Unit> departmentsListView;
-
     @FXML
     private TextField directorateTextField;
-
     @FXML
     private ListView<Unit> directoratesListView;
-
     @FXML
     private ListView<Unit> divisionsListView;
-
     @FXML
     private TextField divisionTextField;
+    @FXML
+    private Label departmentsLabel;
+    @FXML
+    private Label directoratesLabel;
 
 
     public void loadHierarchy() {
+        loadDivisions();
+
+        Unit selectedDivision = divisionsListView.getSelectionModel().getSelectedItem();
+        loadDirectorates(selectedDivision);
+
+        Unit selectedDirectorate = directoratesListView.getSelectionModel().getSelectedItem();
+        loadDepartments(selectedDirectorate);
+    }
+
+    private void loadDivisions() {
         divisionsListView.setItems(FXCollections.observableList(App.database.hierarchy.divisions));
+    }
+
+    private void loadDirectorates(Unit selectedDivision) {
+        if (selectedDivision != null) {
+            directoratesListView.setDisable(false);
+            directoratesListView.setItems(FXCollections.observableList(selectedDivision.getChildren()));
+            directorateTextField.setDisable(false);
+            directoratesLabel.setText(selectedDivision.getName() + " directorates:");
+        } else {
+            directoratesListView.setDisable(true);
+            directoratesListView.setItems(FXCollections.observableList(new ArrayList<>()));
+            directorateTextField.clear();
+            directorateTextField.setDisable(true);
+            directoratesLabel.setText("Choose a division to view its directorates");
+        }
+    }
+
+    private void loadDepartments(Unit selectedDirectorate) {
+        if (selectedDirectorate != null) {
+            departmentsListView.setDisable(false);
+            departmentsListView.setItems(FXCollections.observableList(selectedDirectorate.getChildren()));
+            departmentTextField.setDisable(false);
+            departmentsLabel.setText(selectedDirectorate.getName() + " departments:");
+        } else {
+            departmentsListView.setDisable(true);
+            departmentsListView.setItems(FXCollections.observableList(new ArrayList<>()));
+            departmentTextField.clear();
+            departmentTextField.setDisable(true);
+            departmentsLabel.setText("Choose a directorate to view its departments");
+        }
     }
 
     @FXML
@@ -54,10 +99,10 @@ public class HierarchyController {
             if (!newDepartmentName.isBlank()){
                 Unit newDepartment = new Unit(newDepartmentName, 2, currentDirectorate);
                 currentDirectorate.getChildren().add(newDepartment);
-                departmentsListView.setItems(FXCollections.observableList(currentDirectorate.getChildren()));
+                departmentsListView.getSelectionModel().select(newDepartment);
+                loadHierarchy();
             }
             departmentTextField.clear();
-
         }
 
     }
@@ -70,7 +115,8 @@ public class HierarchyController {
             if (! newDirectoratesName.isBlank()) {
                 Unit newDirectorates = new Unit(newDirectoratesName, 1, currentDivision);
                 currentDivision.getChildren().add(newDirectorates);
-                directoratesListView.setItems(FXCollections.observableList(currentDivision.getChildren()));
+                directoratesListView.getSelectionModel().select(newDirectorates);
+                loadHierarchy();
             }
             directorateTextField.clear();
         }
@@ -82,7 +128,8 @@ public class HierarchyController {
         if (! newDivisionName.isBlank()) {
             Unit newDivision = new Unit(newDivisionName, 0);
             App.database.hierarchy.divisions.add(newDivision);
-            divisionsListView.setItems(FXCollections.observableList(App.database.hierarchy.divisions));
+            divisionsListView.getSelectionModel().select(newDivision);
+            loadHierarchy();
         }
         divisionTextField.clear();
     }
@@ -91,23 +138,20 @@ public class HierarchyController {
     @FXML
     void onDeleteDepartmentClick(ActionEvent event) {
         Unit selectedDepartment = departmentsListView.getSelectionModel().getSelectedItem();
-        Unit selectedDirectorate = directoratesListView.getSelectionModel().getSelectedItem();
-        Unit selectedDivision = divisionsListView.getSelectionModel().getSelectedItem();
 
-        if (selectedDepartment != null && selectedDirectorate != null && selectedDivision != null){
-            selectedDirectorate.getChildren().remove(selectedDepartment);
-            departmentsListView.setItems(FXCollections.observableList(selectedDirectorate.getChildren()));
+        if (selectedDepartment != null ){
+            selectedDepartment.getFather().getChildren().remove(selectedDepartment);
+            loadHierarchy();
         }
     }
 
     @FXML
     void onDeleteDirectoratesClick(ActionEvent event) {
         Unit selectedDirectorate = directoratesListView.getSelectionModel().getSelectedItem();
-        Unit selectedDivision = divisionsListView.getSelectionModel().getSelectedItem();
 
-        if (selectedDirectorate != null && selectedDivision != null) {
-            selectedDivision.getChildren().remove(selectedDirectorate);
-            directoratesListView.setItems(FXCollections.observableList(selectedDivision.getChildren()));
+        if (selectedDirectorate != null) {
+            selectedDirectorate.getFather().getChildren().remove(selectedDirectorate);
+            loadHierarchy();
         }
     }
 
@@ -116,67 +160,89 @@ public class HierarchyController {
         Unit selectedDivision = divisionsListView.getSelectionModel().getSelectedItem();
         if (selectedDivision != null) {
             App.database.hierarchy.divisions.remove(selectedDivision);
-            divisionsListView.setItems(FXCollections.observableList(App.database.hierarchy.divisions));
+            loadHierarchy();
         }
     }
 
-    @FXML
-    void onDepartmentsListViewClick(MouseEvent event) {
-
-    }
 
     @FXML
     void onDirectoratesListViewClick(MouseEvent event) {
-        Unit selectedDirectorate = directoratesListView.getSelectionModel().getSelectedItem();
-        if (selectedDirectorate != null){
-            departmentsListView.setItems(FXCollections.observableList(selectedDirectorate.getChildren()));
-        }
-
+        lastSelectedUnit = directoratesListView.getSelectionModel().getSelectedItem();
+        loadHierarchy();
     }
 
     @FXML
     void onDivisionsListViewClick(MouseEvent event) {
+        lastSelectedUnit = divisionsListView.getSelectionModel().getSelectedItem();
+        loadHierarchy();
+    }
+
+    @FXML
+    void onDepartmentsListViewClick(MouseEvent event) {
+        lastSelectedUnit = departmentsListView.getSelectionModel().getSelectedItem();
+    }
+
+    @FXML
+    void onDowngradeDirectorateClick(ActionEvent event) throws IOException {
+        Unit selectedDirectorate = directoratesListView.getSelectionModel().getSelectedItem();
+        if (selectedDirectorate != null) {
+            // create a modal that have the siblings of the selected division
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("hierarchy/ViewSiblingsModal.fxml")));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(appStage);
+            dialog.setScene(scene);
+            dialog.show();
+
+            ((SiblingsModalController) loader.getController()).loadSiblings(selectedDirectorate);
+        }
+        loadHierarchy();
+    }
+
+    @FXML
+    void onDowngradeDivisionClick(ActionEvent event) throws IOException {
         Unit selectedDivision = divisionsListView.getSelectionModel().getSelectedItem();
         if (selectedDivision != null) {
-            directoratesListView.setItems(FXCollections.observableList(selectedDivision.getChildren()));
+            // create a modal that have the siblings of the selected division
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("hierarchy/ViewSiblingsModal.fxml")));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(appStage);
+            dialog.setScene(scene);
+            dialog.show();
+
+            ((SiblingsModalController) loader.getController()).loadSiblings(selectedDivision);
         }
+        loadHierarchy();
     }
 
     @FXML
-    void onDowngradeDirectorateClick(ActionEvent event) {
+    void onManageJobBandsClick(ActionEvent event) throws IOException {
+        if (lastSelectedUnit != null) {
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("hierarchy/ViewUnitJobBands.fxml")));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setScene(scene);
+            appStage.show();
 
-    }
-
-    @FXML
-    void onDowngradeDivisionClick(ActionEvent event) {
-        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        final Stage dialog = new Stage();
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.initOwner(appStage);
-        VBox dialogVbox = new VBox(20);
-        dialogVbox.getChildren().add(new Text("This is a Dialog"));
-        Scene dialogScene = new Scene(dialogVbox, 300, 200);
-        dialog.setScene(dialogScene);
-        dialog.show();
-    }
-
-    @FXML
-    void onManageJobBandsClick(ActionEvent event) {
-
+            ((UnitJobBandsController) loader.getController()).loadUnitJobBands(lastSelectedUnit);
+        }
     }
 
     @FXML
     void onUpgradeDepartmentClick(ActionEvent event) {
         Unit selectedDepartment = departmentsListView.getSelectionModel().getSelectedItem();
-        Unit selectedDirectorate = directoratesListView.getSelectionModel().getSelectedItem();
-        Unit selectedDivision = divisionsListView.getSelectionModel().getSelectedItem();
 
-        if (selectedDepartment != null && selectedDirectorate != null && selectedDivision != null){
+        if (selectedDepartment != null) {
             App.database.hierarchy.upgradeUnit(selectedDepartment);
-            selectedDirectorate.getChildren().remove(selectedDepartment);
-            selectedDivision.getChildren().add(selectedDepartment);
-            departmentsListView.setItems(FXCollections.observableList(selectedDirectorate.getChildren()));
-            directoratesListView.setItems(FXCollections.observableList(selectedDivision.getChildren()));
+            loadHierarchy();
         }
 
     }
@@ -184,17 +250,11 @@ public class HierarchyController {
     @FXML
     void onUpgradeDirectorateClick(ActionEvent event) {
         Unit selectedDirectorate = directoratesListView.getSelectionModel().getSelectedItem();
-        Unit selectedDivision = divisionsListView.getSelectionModel().getSelectedItem();
 
-
-        if (selectedDirectorate != null && selectedDivision != null){
+        if (selectedDirectorate != null){
             App.database.hierarchy.upgradeUnit(selectedDirectorate);
-            selectedDivision.getChildren().remove(selectedDirectorate);
-            App.database.hierarchy.divisions.add(selectedDirectorate);
-            directoratesListView.setItems(FXCollections.observableList(selectedDivision.getChildren()));
-            divisionsListView.setItems(FXCollections.observableList(App.database.hierarchy.divisions));
+            loadHierarchy();
         }
-
     }
 
 
