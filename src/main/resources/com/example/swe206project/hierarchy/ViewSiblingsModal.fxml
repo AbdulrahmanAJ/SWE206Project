@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="250.0" prefWidth="318.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.controllers.hierarchy.SiblingsModalController">
    <children>
-      <Button fx:id="confirmButton" layoutX="133.0" layoutY="217.0" mnemonicParsing="false" onAction="#OnSiblingsModalConfirmClick" text="Button" />
+      <Button fx:id="confirmButton" layoutX="133.0" layoutY="217.0" mnemonicParsing="false" onAction="#OnSiblingsModalConfirmClick" text="Confirm" />
       <Label fx:id="siblingsModalLabel" contentDisplay="CENTER" layoutX="58.0" layoutY="13.0" prefHeight="17.0" prefWidth="208.0" text="Choose one of the Uniit Siblings" textAlignment="CENTER" textOverrun="CENTER_ELLIPSIS">
          <font>
             <Font size="14.0" />

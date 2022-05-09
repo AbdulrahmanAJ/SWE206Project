@@ -74,4 +74,11 @@ public class Unit implements Serializable {
     public String toString(){
         return this.name;
     }
+
+    public void unlinkAllJobBands() {
+        for (JobBand jobBand: this.getJobBands()) {
+            jobBand.unlinkUnit(this);
+        }
+        this.jobBands.clear();
+    }
 }
