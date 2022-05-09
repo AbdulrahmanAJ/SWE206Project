@@ -8,15 +8,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListView;
-import javafx.scene.control.RadioButton;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleGroup;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.control.DatePicker;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -25,10 +21,15 @@ import java.util.Objects;
 public class CandidatesController {
     ArrayList<Candidate> candidateArrayList = new ArrayList<>();
 
-
+    public void initialize() {
+        createJobOfferBtn.setDisable(true);
+    }
     // view candidates page
     @FXML
     private ListView<Candidate> candidatesList;
+
+    @FXML
+    private Button createJobOfferBtn;
 
     @FXML
     private TextField eduTextField;
@@ -151,6 +152,23 @@ public class CandidatesController {
         LocalDate interviewDate = interviewDatePicker.getValue();
         //Setting the confirmation message
         dateConfirmationLabel.setText("Interview with (Interviewer name) On:\n " + interviewDate);
+    }
+
+
+    @FXML
+    void onClickOpenPdf(ActionEvent event) {
+        String path = "C:\\Users\\xd7z\\Desktop\\Quickie\\transcript money.pdf";
+        File file = new File(path);
+        try {
+            if (file.exists()) {
+                Process pro = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + path);
+                pro.waitFor();
+            } else {
+                System.out.println("file does not exist");
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
 
