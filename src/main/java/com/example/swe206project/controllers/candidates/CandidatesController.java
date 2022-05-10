@@ -1,7 +1,10 @@
 package com.example.swe206project.controllers.candidates;
 
 import com.example.swe206project.App;
+import com.example.swe206project.controllers.hierarchy.SiblingsModalController;
 import com.example.swe206project.models.Candidate;
+import com.example.swe206project.models.Unit;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,6 +13,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.File;
@@ -32,29 +36,12 @@ public class CandidatesController {
     @FXML
     private Button createJobOfferBtn;
 
-    @FXML
-    private TextField eduTextField;
 
-    @FXML
-    private TextField experienceTextField;
 
-    @FXML
-    private RadioButton femaleRadio;
 
-    @FXML
-    private ToggleGroup gender;
-
-    @FXML
-    private TextField idTextField;
-
-    @FXML
-    private Label interview;
-
-    @FXML
-    private RadioButton maleRadio;
-
-    @FXML
-    private TextField nameTextField;
+    public void loadCandidates() {
+        candidatesList.setItems(FXCollections.observableList(App.database.candidates));
+    }
 
     @FXML
     void onBackToHomeClick(ActionEvent event) throws IOException {
@@ -66,54 +53,41 @@ public class CandidatesController {
     }
 
     // This method is what happens when you click on a candidate from the candidate list view.
-    @FXML
-    protected void onCandidateListClick(){
-        Candidate candidate = candidatesList.getSelectionModel().getSelectedItem();
-
-        if (candidate != null) {
-            nameTextField.setText(candidate.getName());
-            idTextField.setText(candidate.getNationalID());
-            eduTextField.setText(candidate.getEducationLevel());
-            experienceTextField.setText(candidate.getYearsOfExperience() + "");
-            if (candidate.getGender().equalsIgnoreCase("male"))
-                maleRadio.setSelected(true);
-            if (candidate.getGender().equalsIgnoreCase("female"))
-                femaleRadio.setSelected(true);
-        }
-    }
+//    @FXML
+//    protected void onCandidateListClick(){
+//        Candidate candidate = candidatesList.getSelectionModel().getSelectedItem();
+//
+//        if (candidate != null) {
+//            nameTextField.setText(candidate.getName());
+//            idTextField.setText(candidate.getNationalID());
+//            educationTextField.setText(candidate.getEducationLevel());
+//            experienceTextField.setText(candidate.getYearsOfExperience() + "");
+//            if (candidate.getGender().equalsIgnoreCase("male"))
+//                maleRadio.setSelected(true);
+//            if (candidate.getGender().equalsIgnoreCase("female"))
+//                femaleRadio.setSelected(true);
+//        }
+//    }
 
     // This is what happens when you click add candidate a new candidate.
+
     @FXML
-    protected void onClickAddCandidate(){
-        try {
+    void onAddNewCandidateClick(ActionEvent event) throws IOException {
 
-            Candidate candidate = null;
-            int exp = Integer.parseInt(experienceTextField.getText());
+            // create a modal that prompts the new candidate
+            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("candidates/ViewNewCandidateModal.fxml")));
+            Parent parent = loader.load();
+            Scene scene = new Scene(parent);
+            Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+            final Stage dialog = new Stage();
+            dialog.initModality(Modality.APPLICATION_MODAL);
+            dialog.initOwner(appStage);
+            dialog.setScene(scene);
+            dialog.show();
 
-            if (maleRadio.isSelected())
-                candidate = new Candidate(nameTextField.getText(), idTextField.getText(), eduTextField.getText(), exp, maleRadio.getText());
+            //((SiblingsModalController) loader.getController()).loadSiblings(selectedDivision);
 
-
-            if (femaleRadio.isSelected())
-                candidate = new Candidate(nameTextField.getText(), idTextField.getText(), eduTextField.getText(), exp, femaleRadio.getText());
-
-            candidatesList.getItems().add(candidate);
-            candidateArrayList.add(candidate);
-
-            nameTextField.clear();
-            idTextField.clear();
-            eduTextField.clear();
-            experienceTextField.clear();
-            maleRadio.setSelected(false);
-            femaleRadio.setSelected(false);
-
-
-
-        }
-        catch (NumberFormatException ex){
-            System.out.println("Invalid input");
-        }
-
+//        loadCandidates();
     }
 
     // This method gets you from the candidates' page to create interview page.

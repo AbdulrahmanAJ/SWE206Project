@@ -1,6 +1,7 @@
 package com.example.swe206project.controllers;
 
 import com.example.swe206project.App;
+import com.example.swe206project.controllers.candidates.CandidatesController;
 import com.example.swe206project.controllers.hierarchy.HierarchyController;
 import com.example.swe206project.controllers.interviewers.InterviewersController;
 import com.example.swe206project.controllers.jobBands.JobBandsController;
@@ -20,11 +21,17 @@ public class HomeController {
     // This is the method that gets you from the home page to candidates page
     @FXML
     public void onViewCandidatesClick(ActionEvent event) throws IOException {
-        Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("candidates/ViewCandidatesPage.fxml")));
-        Scene heirScene = new Scene(heirParent);
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("candidates/ViewCandidatesPage.fxml")));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        scene.setUserData(loader);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setScene(heirScene);
+        appStage.setScene(scene);
         appStage.show();
+
+        // we will get the controller to set the values
+        // TODO: Uncomment the next line when we implement the add candidate page
+//        ((CandidatesController) loader.getController()).loadCandidates();
     }
 
     @FXML
