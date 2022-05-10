@@ -21,9 +21,10 @@ import java.util.Objects;
 public class CandidatesController {
     ArrayList<Candidate> candidateArrayList = new ArrayList<>();
 
-    public void initialize() {
-        createJobOfferBtn.setDisable(true);
-    }
+    // هالميثود عقدتني لمدة ثلاث ساعات
+//    public void initialize() {
+//        createJobOfferBtn.setDisable(true);
+//    }
     // view candidates page
     @FXML
     private ListView<Candidate> candidatesList;
