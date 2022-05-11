@@ -1,11 +1,9 @@
 package com.example.swe206project.controllers.hierarchy;
 
 import com.example.swe206project.App;
-import com.example.swe206project.controllers.jobBands.JobsController;
 import com.example.swe206project.models.Unit;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -16,9 +14,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -44,6 +39,29 @@ public class HierarchyController {
     private Label departmentsLabel;
     @FXML
     private Label directoratesLabel;
+    @FXML
+    private Button downgradeDivision;
+    @FXML
+    private Button downgradeDirectorate;
+    @FXML
+    private Button upgradeDirectorate;
+    @FXML
+    private Button upgradeDepartment;
+    @FXML
+    private Button manageBands;
+    @FXML
+    private Button addDivision;
+    @FXML
+    private Button deleteDivision;
+    @FXML
+    private Button addDirectorate;
+    @FXML
+    private Button deleteDirectorate;
+    @FXML
+    private Button addDepartment;
+    @FXML
+    private Button deleteDepartment;
+
 
     public void initialize() {
         loadHierarchy();
@@ -56,8 +74,45 @@ public class HierarchyController {
         Unit selectedDivision = divisionsListView.getSelectionModel().getSelectedItem();
         loadDirectorates(selectedDivision);
 
+        if (selectedDivision != null){
+            downgradeDivision.setDisable(false);
+            deleteDivision.setDisable(false);
+            manageBands.setDisable(false);
+        }
+        else{
+            downgradeDivision.setDisable(true);
+            deleteDivision.setDisable(true);
+            manageBands.setDisable(true);
+        }
+
+
+
         Unit selectedDirectorate = directoratesListView.getSelectionModel().getSelectedItem();
+
+        if (selectedDirectorate != null){
+            downgradeDirectorate.setDisable(false);
+            upgradeDirectorate.setDisable(false);
+            deleteDirectorate.setDisable(false);
+        }
+        else{
+            downgradeDirectorate.setDisable(true);
+            upgradeDirectorate.setDisable(true);
+            deleteDirectorate.setDisable(true);
+        }
+
         loadDepartments(selectedDirectorate);
+        Unit selectedDepartment = departmentsListView.getSelectionModel().getSelectedItem();
+
+        if (selectedDepartment != null){
+            upgradeDepartment.setDisable(false);
+            deleteDepartment.setDisable(false);
+        }
+        else{
+            upgradeDepartment.setDisable(true);
+            deleteDepartment.setDisable(true);
+        }
+
+
     }
 
     private void loadDivisions() {
@@ -69,12 +124,14 @@ public class HierarchyController {
             directoratesListView.setDisable(false);
             directoratesListView.setItems(FXCollections.observableList(selectedDivision.getChildren()));
             directorateTextField.setDisable(false);
+            addDirectorate.setDisable(false);
             directoratesLabel.setText(selectedDivision.getName() + " directorates:");
         } else {
             directoratesListView.setDisable(true);
             directoratesListView.setItems(FXCollections.observableList(new ArrayList<>()));
             directorateTextField.clear();
             directorateTextField.setDisable(true);
+            addDirectorate.setDisable(true);
             directoratesLabel.setText("Choose a division to view its directorates");
         }
     }
@@ -84,14 +141,17 @@ public class HierarchyController {
             departmentsListView.setDisable(false);
             departmentsListView.setItems(FXCollections.observableList(selectedDirectorate.getChildren()));
             departmentTextField.setDisable(false);
+            addDepartment.setDisable(false);
             departmentsLabel.setText(selectedDirectorate.getName() + " departments:");
         } else {
             departmentsListView.setDisable(true);
             departmentsListView.setItems(FXCollections.observableList(new ArrayList<>()));
             departmentTextField.clear();
             departmentTextField.setDisable(true);
+            addDepartment.setDisable(true);
             departmentsLabel.setText("Choose a directorate to view its departments");
         }
+
     }
 
     @FXML

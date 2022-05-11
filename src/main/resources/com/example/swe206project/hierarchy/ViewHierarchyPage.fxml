@@ -20,34 +20,34 @@
    <Label fx:id="departmentsLabel" layoutX="410.0" layoutY="69.0" prefHeight="43.0" prefWidth="130.0" text="Directorate's departments:" wrapText="true" />
    <Label fx:id="directoratesLabel" layoutX="225.0" layoutY="69.0" prefHeight="43.0" prefWidth="130.0" text="Division's directorates:" wrapText="true" />
    <Label layoutX="47.0" layoutY="70.0" prefHeight="43.0" prefWidth="130.0" text="Divisions:" wrapText="true" />
-   <Button layoutX="51.0" layoutY="354.0" mnemonicParsing="false" onAction="#onAddDivisionClick" prefHeight="25.0" prefWidth="58.0" text="Add" />
+   <Button fx:id="addDivision" layoutX="51.0" layoutY="354.0" mnemonicParsing="false" onAction="#onAddDivisionClick" prefHeight="25.0" prefWidth="58.0" text="Add" />
    <TextField fx:id="divisionTextField" layoutX="49.0" layoutY="324.0" prefWidth="151.0" />
-   <Button layoutX="137.0" layoutY="354.0" mnemonicParsing="false" onAction="#onDeleteDivisionClick" prefHeight="25.0" prefWidth="58.0" text="Delete" />
-   <Button layoutX="51.0" layoutY="290.0" mnemonicParsing="false" onAction="#onDowngradeDivisionClick" prefHeight="25.0" prefWidth="142.0" text="Downgrade">
+   <Button fx:id="deleteDivision" layoutX="137.0" layoutY="354.0" mnemonicParsing="false" onAction="#onDeleteDivisionClick" prefHeight="25.0" prefWidth="58.0" text="Delete" />
+   <Button fx:id="downgradeDivision" layoutX="51.0" layoutY="290.0" mnemonicParsing="false" onAction="#onDowngradeDivisionClick" prefHeight="25.0" prefWidth="142.0" text="Downgrade">
       <font>
          <Font size="9.0" />
       </font>
    </Button>
-   <Button layoutX="228.0" layoutY="354.0" mnemonicParsing="false" onAction="#onAddDirectoratesClick" prefHeight="25.0" prefWidth="58.0" text="Add" />
+   <Button fx:id="addDirectorate" layoutX="228.0" layoutY="354.0" mnemonicParsing="false" onAction="#onAddDirectoratesClick" prefHeight="25.0" prefWidth="58.0" text="Add" />
    <TextField fx:id="directorateTextField" layoutX="226.0" layoutY="324.0" prefWidth="151.0" />
-   <Button layoutX="314.0" layoutY="354.0" mnemonicParsing="false" onAction="#onDeleteDirectoratesClick" prefHeight="25.0" prefWidth="58.0" text="Delete" />
-   <Button layoutX="228.0" layoutY="290.0" mnemonicParsing="false" onAction="#onDowngradeDirectorateClick" prefHeight="26.0" prefWidth="70.0" text="Downgrade" wrapText="true">
+   <Button fx:id="deleteDirectorate" layoutX="314.0" layoutY="354.0" mnemonicParsing="false" onAction="#onDeleteDirectoratesClick" prefHeight="25.0" prefWidth="58.0" text="Delete" />
+   <Button fx:id="downgradeDirectorate" layoutX="228.0" layoutY="290.0" mnemonicParsing="false" onAction="#onDowngradeDirectorateClick" prefHeight="26.0" prefWidth="70.0" text="Downgrade" wrapText="true">
       <font>
          <Font size="9.0" />
       </font>
    </Button>
-   <Button layoutX="302.0" layoutY="290.0" mnemonicParsing="false" onAction="#onUpgradeDirectorateClick" prefHeight="26.0" prefWidth="70.0" text="Upgrade">
+   <Button fx:id="upgradeDirectorate" layoutX="302.0" layoutY="290.0" mnemonicParsing="false" onAction="#onUpgradeDirectorateClick" prefHeight="26.0" prefWidth="70.0" text="Upgrade">
       <font>
          <Font size="9.0" />
       </font>
    </Button>
-   <Button layoutX="410.0" layoutY="354.0" mnemonicParsing="false" onAction="#onAddDepartmentClick" prefHeight="25.0" prefWidth="58.0" text="Add" />
+   <Button fx:id="addDepartment" layoutX="410.0" layoutY="354.0" mnemonicParsing="false" onAction="#onAddDepartmentClick" prefHeight="25.0" prefWidth="58.0" text="Add" />
    <TextField fx:id="departmentTextField" layoutX="410.0" layoutY="324.0" prefWidth="151.0" />
-   <Button layoutX="499.0" layoutY="354.0" mnemonicParsing="false" onAction="#onDeleteDepartmentClick" prefHeight="25.0" prefWidth="58.0" text="Delete" />
-   <Button layoutX="415.0" layoutY="290.0" mnemonicParsing="false" onAction="#onUpgradeDepartmentClick" prefHeight="25.0" prefWidth="142.0" text="Upgrade">
+   <Button fx:id="deleteDepartment" layoutX="499.0" layoutY="354.0" mnemonicParsing="false" onAction="#onDeleteDepartmentClick" prefHeight="25.0" prefWidth="58.0" text="Delete" />
+   <Button fx:id="upgradeDepartment" layoutX="415.0" layoutY="290.0" mnemonicParsing="false" onAction="#onUpgradeDepartmentClick" prefHeight="25.0" prefWidth="142.0" text="Upgrade">
       <font>
          <Font size="9.0" />
       </font>
    </Button>
-   <Button layoutX="491.0" layoutY="12.0" mnemonicParsing="false" onAction="#onManageJobBandsClick" prefHeight="43.0" prefWidth="83.0" text="Manage Job Bands" textAlignment="CENTER" wrapText="true" />
+   <Button fx:id="manageBands" layoutX="491.0" layoutY="12.0" mnemonicParsing="false" onAction="#onManageJobBandsClick" prefHeight="43.0" prefWidth="83.0" text="Manage Job Bands" textAlignment="CENTER" wrapText="true" />
 </AnchorPane>
