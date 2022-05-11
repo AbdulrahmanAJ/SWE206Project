@@ -6,7 +6,7 @@ import java.util.Stack;
 
 public class Candidate implements Serializable {
     String nationalID;
-    String gender;
+    String gender; // M for male and F for Female
     String name;
     String educationLevel;
     int yearsOfExperience;

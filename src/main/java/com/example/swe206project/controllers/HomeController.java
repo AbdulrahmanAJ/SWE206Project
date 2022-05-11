@@ -28,10 +28,6 @@ public class HomeController {
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(scene);
         appStage.show();
-
-        // we will get the controller to set the values
-        // TODO: Uncomment the next line when we implement the add candidate page
-//        ((CandidatesController) loader.getController()).loadCandidates();
     }
 
     @FXML
@@ -43,9 +39,6 @@ public class HomeController {
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(scene);
         appStage.show();
-
-        // we will get the controller to set the values
-        ((HierarchyController) loader.getController()).loadHierarchy();
     }
 
     // This is the method that gets you from the home page to interviewers page
@@ -57,8 +50,6 @@ public class HomeController {
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(scene);
         appStage.show();
-
-        ((InterviewersController) loader.getController()).loadInterviewers();
     }
 
     // This is the method that gets you from the home page to job bands page
@@ -71,8 +62,5 @@ public class HomeController {
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
         appStage.setScene(scene);
         appStage.show();
-
-        // we will get the controller to set the values
-        ((JobBandsController) loader.getController()).loadJobBands();
     }
 }
