@@ -45,6 +45,10 @@ public class HierarchyController {
     @FXML
     private Label directoratesLabel;
 
+    public void initialize() {
+        loadHierarchy();
+    }
+
 
     public void loadHierarchy() {
         loadDivisions();

@@ -25,6 +25,9 @@ public class InterviewersController {
     @FXML
     private ListView<Interviewer> interviewersListView;
 
+    public void initialize() {
+        loadInterviewers();
+    }
 
     public void loadInterviewers(){
         interviewersListView.setItems(FXCollections.observableList(App.database.interviewers));

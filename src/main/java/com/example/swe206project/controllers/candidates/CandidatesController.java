@@ -26,22 +26,18 @@ public class CandidatesController {
     ArrayList<Candidate> candidateArrayList = new ArrayList<>();
 
     // هالميثود عقدتني لمدة ثلاث ساعات
-//    public void initialize() {
-//        createJobOfferBtn.setDisable(true);
-//    }
+    public void initialize() {
+        createJobOfferBtn.setDisable(true);
+        candidatesListView.setItems(FXCollections.observableList(App.database.candidates));
+    }
+
     // view candidates page
     @FXML
-    private ListView<Candidate> candidatesList;
+    private ListView<Candidate> candidatesListView;
 
     @FXML
     private Button createJobOfferBtn;
 
-
-
-
-    public void loadCandidates() {
-        candidatesList.setItems(FXCollections.observableList(App.database.candidates));
-    }
 
     @FXML
     void onBackToHomeClick(ActionEvent event) throws IOException {
@@ -79,6 +75,7 @@ public class CandidatesController {
             Parent parent = loader.load();
             Scene scene = new Scene(parent);
             Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+            appStage.setResizable(false);
             final Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.initOwner(appStage);

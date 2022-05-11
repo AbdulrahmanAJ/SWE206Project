@@ -19,7 +19,7 @@
          </font>
       </Button>
       <Button layoutX="265.0" layoutY="522.0" mnemonicParsing="false" onAction="#onCreateInterviewClick" prefHeight="50.0" prefWidth="118.0" text="Create an interview" />
-      <ListView layoutX="17.0" layoutY="45.0" prefHeight="528.0" prefWidth="218.0" />
+      <ListView fx:id="candidatesListView" layoutX="17.0" layoutY="45.0" prefHeight="528.0" prefWidth="218.0" />
       <Label layoutX="78.0" layoutY="14.0" prefHeight="35.0" prefWidth="94.0" text="Candidates">
          <font>
             <Font name="Dubai Regular" size="20.0" />

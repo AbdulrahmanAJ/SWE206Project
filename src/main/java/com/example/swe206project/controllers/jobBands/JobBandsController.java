@@ -25,6 +25,9 @@ public class JobBandsController {
     @FXML
     private ListView<JobBand> jobBandListView;
 
+    public void initialize() {
+        loadJobBands();
+    }
 
     public void loadJobBands() {
         jobBandListView.setItems(FXCollections.observableArrayList(App.database.jobBands));
