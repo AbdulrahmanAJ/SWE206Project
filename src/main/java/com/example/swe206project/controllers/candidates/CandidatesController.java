@@ -174,11 +174,17 @@ public class CandidatesController {
     @FXML
     void onAddNewCandidateClick(ActionEvent event) throws IOException {
 
-        Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("candidates/ViewAddCandidatePage.fxml")));
-        Scene heirScene = new Scene(heirParent);
+        // create a modal that prompts the new candidate
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("candidates/ViewNewCandidateModal.fxml")));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setScene(heirScene);
-        appStage.show();
+        appStage.setResizable(false);
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(appStage);
+        dialog.setScene(scene);
+        dialog.show();
 
     }
 //
@@ -207,6 +213,9 @@ public class CandidatesController {
             selectedCandidateGender.setText("Gender: " + selectedCandidate.getGender());
             selectedCandidateYearsOfExperience.setText("Years Of Experience: " + selectedCandidate.getYearsOfExperience());
             selectedCandidateEducationLevel.setText("Education Level: " + selectedCandidate.getEducationLevel());
+            if(selectedCandidate.getInterviews().size() != 0 && !selectedCandidate.getInterviews().peek().getStatus().equals("Hold")) {
+                createInterviewBtn.setDisable(true);
+            }
 
         }
     }
