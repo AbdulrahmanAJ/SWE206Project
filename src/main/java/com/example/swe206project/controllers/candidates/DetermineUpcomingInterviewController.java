@@ -24,7 +24,6 @@ public class DetermineUpcomingInterviewController {
     public void setSelectedCandidateForInterview(Candidate selectedCandidateForInterview) {
         this.selectedCandidateForInterview = selectedCandidateForInterview;
         confirmStatusBtn.setDisable(true);
-        System.out.println(selectedCandidateForInterview.getInterviews());
         if (selectedCandidateForInterview.getInterviews().size() == 3)
             holdRadioButton.setVisible(false);
     }

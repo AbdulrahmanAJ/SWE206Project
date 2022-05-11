@@ -19,7 +19,9 @@ public class Interviewer implements Serializable {
     public ArrayList<Interview> getInterviews() {
         return interviews;
     }
-
+    public void removeInterview(Interview interview) {
+        interviews.remove(interview);
+    }
     public void addInterview(Interview interview) {
         interviews.add(interview);
     }

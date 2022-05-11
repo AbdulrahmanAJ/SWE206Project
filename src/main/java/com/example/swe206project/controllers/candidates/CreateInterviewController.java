@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -131,7 +132,7 @@ public class CreateInterviewController implements Initializable {
                 .addInterview(new Interview(selectedCandidateForInterview, interviewersListView.getSelectionModel().getSelectedItem(),
                         LocalDateTime.of( interviewDate.getYear(), interviewDate.getMonth(), interviewDate.getDayOfMonth(),
                                 hour, minute), status, (int) durationSlider.getValue()));
-        App.database.interviewers.get(App.database.candidates.indexOf(interviewersListView.getSelectionModel().getSelectedItem()))
+        App.database.interviewers.get(App.database.interviewers.indexOf(interviewersListView.getSelectionModel().getSelectedItem()))
                 .addInterview(new Interview(selectedCandidateForInterview, interviewersListView.getSelectionModel().getSelectedItem(),
                         LocalDateTime.of( interviewDate.getYear(), interviewDate.getMonth(), interviewDate.getDayOfMonth(),
                                 hour, minute), status, (int) durationSlider.getValue()));
@@ -144,6 +145,7 @@ public class CreateInterviewController implements Initializable {
     @FXML
     void onClickConfirmDate(ActionEvent event) {
         ArrayList<Interviewer> availableInterviewers = (ArrayList<Interviewer>) App.database.interviewers.clone();
+        ArrayList<Interviewer> toRemove = new ArrayList<Interviewer>();
         LocalDate interviewDate = interviewDatePicker.getValue();
         for (Interviewer interviewer :
                 availableInterviewers) {
@@ -156,11 +158,15 @@ public class CreateInterviewController implements Initializable {
                 LocalDateTime createdInterviewEndTime = LocalDateTime.of( interviewDate.getYear(), interviewDate.getMonth(),
                         interviewDate.getDayOfMonth(), hour, minute).plusMinutes((int) durationSlider.getValue());
                 if (loggedInterviewStartTime.isBefore(createdInterviewStartTime) && loggedInterviewEndTime.isAfter(createdInterviewStartTime)
-                        || loggedInterviewStartTime.isBefore(createdInterviewEndTime) && loggedInterviewEndTime.isAfter(createdInterviewEndTime)) {
-                    availableInterviewers.remove(interviewer);
+                        || loggedInterviewStartTime.isBefore(createdInterviewEndTime) && loggedInterviewEndTime.isAfter(createdInterviewEndTime)
+                        || loggedInterviewStartTime.isEqual(createdInterviewStartTime) || loggedInterviewEndTime.isEqual(createdInterviewEndTime)
+                        || loggedInterviewStartTime.isAfter(createdInterviewStartTime) && loggedInterviewEndTime.isBefore(createdInterviewEndTime)) {
+                    toRemove.add(interviewer);
+                    break;
                 }
             }
         }
+        availableInterviewers.removeAll(toRemove);
         interviewersListView.setItems(FXCollections.observableList(availableInterviewers));
         interviewersPane.setVisible(true);
     }
@@ -183,7 +189,8 @@ public class CreateInterviewController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 hour = (int) hourSlider.getValue();
-                interviewTimeLabel.setText("Interview start time: " + Integer.toString(hour) + ":" + Integer.toString(minute) );
+                LocalTime time = LocalTime.of(hour, minute);
+                interviewTimeLabel.setText("Interview start time: " + time );
             }
         });
         minuteSlider.valueProperty().addListener(new ChangeListener<Number>() {
@@ -191,7 +198,8 @@ public class CreateInterviewController implements Initializable {
             @Override
             public void changed(ObservableValue<? extends Number> observableValue, Number number, Number t1) {
                 minute = (int) minuteSlider.getValue();
-                interviewTimeLabel.setText("Interview start time: " + Integer.toString(hour) + ":" + Integer.toString(minute) );
+                LocalTime time = LocalTime.of(hour, minute);
+                interviewTimeLabel.setText("Interview start time: " + time );
             }
         });
     }

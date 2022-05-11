@@ -53,7 +53,7 @@
             </font>
          </Label>
          <Button fx:id="dateConfirmBtn" layoutX="509.0" layoutY="164.0" mnemonicParsing="false" onAction="#onClickConfirmDate" prefHeight="26.0" prefWidth="154.0" text="Confirm date and time" textAlignment="CENTER" />
-         <Label fx:id="interviewTimeLabel" layoutX="329.0" layoutY="167.0" prefHeight="20.0" prefWidth="166.0" text="Interview start time: 0:0">
+         <Label fx:id="interviewTimeLabel" layoutX="329.0" layoutY="167.0" prefHeight="20.0" prefWidth="166.0" text="Interview start time: 00:00">
             <font>
                <Font size="14.0" />
             </font>

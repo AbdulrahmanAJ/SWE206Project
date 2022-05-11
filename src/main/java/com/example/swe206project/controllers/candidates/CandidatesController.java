@@ -4,6 +4,8 @@ import com.example.swe206project.App;
 import com.example.swe206project.controllers.hierarchy.SiblingsModalController;
 import com.example.swe206project.controllers.hierarchy.UnitJobBandsController;
 import com.example.swe206project.models.Candidate;
+import com.example.swe206project.models.Interview;
+import com.example.swe206project.models.Interviewer;
 import com.example.swe206project.models.Unit;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -32,7 +34,7 @@ public class CandidatesController {
         determineUpcomingBtn.setDisable(true);
         createInterviewBtn.setDisable(true);
         createJobOfferBtn.setDisable(true);
-        removeCandidateBtn.setDisable(true);
+        jobOfferPane.setVisible(false);
         loadCandidates();
     }
 
@@ -103,7 +105,7 @@ public class CandidatesController {
     private Label jobOfferSalary;
 
     @FXML
-    private Label jobOfferWork;
+    private Label jobOfferUnit;
 
     @FXML
     private Button openCVBtn;
@@ -111,8 +113,6 @@ public class CandidatesController {
     @FXML
     private AnchorPane personalInformationPane;
 
-    @FXML
-    private Button removeCandidateBtn;
 
     @FXML
     private Label selectedCandidateEducationLevel;
@@ -163,17 +163,11 @@ public class CandidatesController {
     @FXML
     void onAddNewCandidateClick(ActionEvent event) throws IOException {
 
-        // create a modal that prompts the new candidate
-        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("candidates/ViewNewCandidateModal.fxml")));
-        Parent parent = loader.load();
-        Scene scene = new Scene(parent);
+        Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("candidates/ViewAddCandidatePage.fxml")));
+        Scene heirScene = new Scene(heirParent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setResizable(false);
-        final Stage dialog = new Stage();
-        dialog.initModality(Modality.APPLICATION_MODAL);
-        dialog.initOwner(appStage);
-        dialog.setScene(scene);
-        dialog.show();
+        appStage.setScene(heirScene);
+        appStage.show();
 
     }
 //
@@ -189,7 +183,18 @@ public class CandidatesController {
 
         ((CreateInterviewController) loader.getController()).setSelectedCandidateForInterview(lastSelectedCandidate);
     }
-//
+
+    @FXML
+    void onClickCreateJobOffer(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("candidates/ViewCreateJobOfferPage.fxml")));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(scene);
+        appStage.show();
+
+        ((JobOfferController) loader.getController()).setSelectedCandidateForOffer(lastSelectedCandidate);
+    }
     @FXML
     void onClickSelectCandidate(MouseEvent event) {
         Candidate selectedCandidate = candidatesListView.getSelectionModel().getSelectedItem();
@@ -210,12 +215,21 @@ public class CandidatesController {
                 determineUpcomingBtn.setDisable(false);
             else
                 determineUpcomingBtn.setDisable(true);
-            removeCandidateBtn.setDisable(false);
-            if (selectedCandidate.getInterviews().size() != 0 && selectedCandidate.getInterviews().peek().getStatus().equals("Pass"))
-                createJobOfferBtn.setDisable(false);
+            if (selectedCandidate.getInterviews().size() != 0 && selectedCandidate.getInterviews().peek().getStatus().equals("Pass")) {
+                if (selectedCandidate.getJobOffer() != null) {
+                    jobOfferUnit.setText("Works in: " + selectedCandidate.getJobOffer().getEmploymentUnit().getName());
+                    jobOfferJob.setText("Job: " + selectedCandidate.getJobOffer().getJob().getTitle());
+                    jobOfferSalary.setText("Salary: " + selectedCandidate.getJobOffer().getFinalSalary());
+                    jobOfferPane.setVisible(true);
+                    createJobOfferBtn.setDisable(true);
+                }
+                else {
+                    jobOfferPane.setVisible(false);
+                    createJobOfferBtn.setDisable(false);
+                }
+            }
             else
                 createJobOfferBtn.setDisable(true);
-
         }
     }
 
@@ -308,19 +322,24 @@ public class CandidatesController {
 
         ((DetermineUpcomingInterviewController) loader.getController()).setSelectedCandidateForInterview(lastSelectedCandidate);
     }
-    @FXML
-    void onClickRemoveCandidate(ActionEvent event) {
-        Candidate selectedCandidate = candidatesListView.getSelectionModel().getSelectedItem();
-        if (selectedCandidate != null) {
-            App.database.candidates.remove(selectedCandidate);
-            loadCandidates();
-            personalInformationPane.setVisible(false);
-            jobInformationPane.setVisible(false);
-            createInterviewBtn.setDisable(true);
-            createJobOfferBtn.setDisable(true);
-            removeCandidateBtn.setDisable(true);
-        }
-    }
+//    @FXML
+//    void onClickRemoveCandidate(ActionEvent event) {
+//        Candidate selectedCandidate = candidatesListView.getSelectionModel().getSelectedItem();
+//        if (selectedCandidate != null) {
+//            for (Interview interview :
+//                    selectedCandidate.getInterviews()) {
+//                Interviewer interviewer = interview.getInterviewer();
+//                App.database.interviewers.get(App.database.interviewers.indexOf(interviewer)).removeInterview(interview);
+//            }
+//            App.database.candidates.remove(selectedCandidate);
+//            loadCandidates();
+//            personalInformationPane.setVisible(false);
+//            jobInformationPane.setVisible(false);
+//            createInterviewBtn.setDisable(true);
+//            createJobOfferBtn.setDisable(true);
+//            removeCandidateBtn.setDisable(true);
+//        }
+//    }
 
     @FXML
     void onClickOpenPdf(ActionEvent event) {

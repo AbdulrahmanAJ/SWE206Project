@@ -4,17 +4,25 @@ import java.io.Serializable;
 
 public class Job implements Serializable {
     String title;
-    double baseSalary;
+    int baseSalary;
 
     public Job(String title){
         this.title = title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setBaseSalary(int baseSalary) {
+        this.baseSalary = baseSalary;
     }
 
     public String getTitle() {
         return title;
     }
 
-    public double getBaseSalary() {
+    public int getBaseSalary() {
         return baseSalary;
     }
 

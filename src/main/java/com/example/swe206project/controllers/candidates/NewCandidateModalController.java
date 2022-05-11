@@ -45,8 +45,8 @@ public class NewCandidateModalController {
 
         // make the male button selected by default
         maleRadio.setSelected(true);
-        maleRadio.setUserData("M");
-        femaleRadio.setUserData("F");
+        maleRadio.setUserData("Male");
+        femaleRadio.setUserData("Female");
     }
 //
     @FXML
