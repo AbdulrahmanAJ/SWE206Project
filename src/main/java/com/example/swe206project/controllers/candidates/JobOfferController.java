@@ -101,13 +101,14 @@ public class JobOfferController {
 
     @FXML
     void onKeyReleaseSalaryTextField(KeyEvent event) {
-        actualBasicSalary = (Integer.parseInt(actualSalaryTextField.getText()));
+        if (!actualSalaryTextField.getText().isBlank())
+            actualBasicSalary = (Integer.parseInt(actualSalaryTextField.getText()));
         if (actualBasicSalary >= minSalary && actualBasicSalary <= maxSalary) {
             int transportationBenefit = actualBasicSalary / 10;
             int housingBenefit = actualBasicSalary / 4;
             housingBenefitLabel.setText("Housing benefit: " + housingBenefit + " SAR");
             transportationBenefitLabel.setText("Transportation benefit: " + transportationBenefit + " SAR");
-            int totalSalary = actualBasicSalary + housingBenefit + transportationBenefit;
+            totalSalary = actualBasicSalary + housingBenefit + transportationBenefit;
             totalSalaryLabel.setText("Total salary: " + totalSalary + " SAR");
             confirmJobOfferBtn.setDisable(false);
         }

@@ -28,7 +28,6 @@ public class AddCandidateController {
 
     @FXML
     private TextField newCandidateEducationLevel;
-//
     @FXML
     private RadioButton newCandidateFemale;
 
@@ -43,7 +42,20 @@ public class AddCandidateController {
 
     @FXML
     private TextField newCandidateYearsOfExperience;
+    public void initialize() {
+        // will make the user only able to add digits in the id and the years of ex fields
+        newCandidateID.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(!newValue.matches("[0-9]*")){
+                newCandidateID.setText(oldValue);
+            }
+        });
+        newCandidateYearsOfExperience.textProperty().addListener((observable, oldValue, newValue) -> {
+            if(!newValue.matches("[0-9]*")){
+                newCandidateYearsOfExperience.setText(oldValue);
+            }
+        });
 
+    }
     @FXML
     void onClickBackToCandidatesPage(ActionEvent event) throws IOException {
         Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("candidates/ViewCandidatesPage.fxml")));

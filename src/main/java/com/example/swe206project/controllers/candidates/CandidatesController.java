@@ -147,8 +147,6 @@ public class CandidatesController {
     @FXML
     private Label timeInterview3;
 
-
-
     Candidate lastSelectedCandidate;
 
     @FXML
@@ -170,8 +168,7 @@ public class CandidatesController {
         appStage.show();
 
     }
-//
-    // This method gets you from the candidates' page to create interview page.
+
     @FXML
     protected void onCreateInterviewClick(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("candidates/ViewCreateInterviewPage.fxml")));
@@ -219,7 +216,7 @@ public class CandidatesController {
                 if (selectedCandidate.getJobOffer() != null) {
                     jobOfferUnit.setText("Works in: " + selectedCandidate.getJobOffer().getEmploymentUnit().getName());
                     jobOfferJob.setText("Job: " + selectedCandidate.getJobOffer().getJob().getTitle());
-                    jobOfferSalary.setText("Salary: " + selectedCandidate.getJobOffer().getFinalSalary());
+                    jobOfferSalary.setText("Salary: " + selectedCandidate.getJobOffer().getFinalSalary() + " SAR");
                     jobOfferPane.setVisible(true);
                     createJobOfferBtn.setDisable(true);
                 }
@@ -322,24 +319,6 @@ public class CandidatesController {
 
         ((DetermineUpcomingInterviewController) loader.getController()).setSelectedCandidateForInterview(lastSelectedCandidate);
     }
-//    @FXML
-//    void onClickRemoveCandidate(ActionEvent event) {
-//        Candidate selectedCandidate = candidatesListView.getSelectionModel().getSelectedItem();
-//        if (selectedCandidate != null) {
-//            for (Interview interview :
-//                    selectedCandidate.getInterviews()) {
-//                Interviewer interviewer = interview.getInterviewer();
-//                App.database.interviewers.get(App.database.interviewers.indexOf(interviewer)).removeInterview(interview);
-//            }
-//            App.database.candidates.remove(selectedCandidate);
-//            loadCandidates();
-//            personalInformationPane.setVisible(false);
-//            jobInformationPane.setVisible(false);
-//            createInterviewBtn.setDisable(true);
-//            createJobOfferBtn.setDisable(true);
-//            removeCandidateBtn.setDisable(true);
-//        }
-//    }
 
     @FXML
     void onClickOpenPdf(ActionEvent event) {

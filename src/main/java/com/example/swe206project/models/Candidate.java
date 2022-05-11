@@ -6,15 +6,13 @@ import java.util.Stack;
 
 public class Candidate implements Serializable {
     String nationalID;
-    String gender; // M for male and F for Female
+    String gender;
     String name;
     String educationLevel;
     int yearsOfExperience;
     File CV;
     Stack<Interview> interviews = new Stack<Interview>();
     JobOffer jobOffer = null;
-    Unit employmentUnit = null;
-//
     public Candidate(String name, String nationalID, String educationLevel, int yearsOfExperience, String gender, File CV){
         this.name = name;
         this.nationalID = nationalID;
@@ -65,9 +63,6 @@ public class Candidate implements Serializable {
         return jobOffer;
     }
 
-    public Unit getEmploymentUnit() {
-        return employmentUnit;
-    }
 
     public String toString(){
         return this.getName();
