@@ -21,6 +21,7 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Objects;
 //
@@ -35,8 +36,7 @@ public class CandidatesController {
         candidatesListView.setItems(FXCollections.observableList(App.database.candidates));
     }
     // view candidates page
-    @FXML
-    private AnchorPane Interview1Pane;
+
 
     @FXML
     private ListView<Candidate> candidatesListView;
@@ -66,13 +66,37 @@ public class CandidatesController {
     private Label durationInterview3;
 
     @FXML
+    private AnchorPane interview1Pane;
+
+    @FXML
     private AnchorPane interview2Pane;
 
     @FXML
     private AnchorPane interview3Pane;
 
     @FXML
+    private Label interviewerInterview1;
+
+    @FXML
+    private Label interviewerInterview2;
+
+    @FXML
+    private Label interviewerInterview3;
+
+    @FXML
     private AnchorPane jobInformationPane;
+
+    @FXML
+    private Label jobOfferJob;
+
+    @FXML
+    private AnchorPane jobOfferPane;
+
+    @FXML
+    private Label jobOfferSalary;
+
+    @FXML
+    private Label jobOfferWork;
 
     @FXML
     private Button openCVBtn;
@@ -115,6 +139,7 @@ public class CandidatesController {
 
     @FXML
     private Label timeInterview3;
+
 
     Candidate lastSelectedCandidate;
 
@@ -174,16 +199,87 @@ public class CandidatesController {
     void onClickSelectCandidate(MouseEvent event) {
         Candidate selectedCandidate = candidatesListView.getSelectionModel().getSelectedItem();
         if (selectedCandidate != null) {
+            lastSelectedCandidate = selectedCandidate;
             showPanes(true);
+            showInterviews(selectedCandidate.getInterviews().size());
             selectedCandidateName.setText("Name: " + selectedCandidate.getName());
             selectedCandidateID.setText("National ID: " + selectedCandidate.getNationalID());
             selectedCandidateGender.setText("Gender: " + selectedCandidate.getGender());
             selectedCandidateYearsOfExperience.setText("Years Of Experience: " + selectedCandidate.getYearsOfExperience());
             selectedCandidateEducationLevel.setText("Education Level: " + selectedCandidate.getEducationLevel());
-            lastSelectedCandidate = selectedCandidate;
+
         }
     }
 
+    void showInterviews(int numberOfInterviews) {
+        if (numberOfInterviews == 0) {
+            interview1Pane.setVisible(false);
+            interview2Pane.setVisible(false);
+            interview3Pane.setVisible(false);
+        }
+        else if (numberOfInterviews == 1) {
+            interview1Pane.setVisible(true);
+            dateInterview1.setText("Date: " + lastSelectedCandidate.getInterviews().get(0).getTime()
+                    .format(DateTimeFormatter.ofPattern("YYYY/MM/dd")));
+            timeInterview1.setText("Time: " + lastSelectedCandidate.getInterviews().get(0).getTime()
+                    .format(DateTimeFormatter.ofPattern("HH:mm")));
+            durationInterview1.setText("Duration: " + lastSelectedCandidate.getInterviews().get(0).getDuration() + " minutes");
+            statusInterview1.setText("Status: " + lastSelectedCandidate.getInterviews().get(0).getStatus());
+            interviewerInterview1.setText("Interviewer: " + lastSelectedCandidate.getInterviews().get(0).getInterviewer().getName());
+
+            interview2Pane.setVisible(false);
+            interview3Pane.setVisible(false);
+        }
+        else if (numberOfInterviews == 2) {
+            interview1Pane.setVisible(true);
+            dateInterview1.setText("Date: " + lastSelectedCandidate.getInterviews().get(0).getTime()
+                    .format(DateTimeFormatter.ofPattern("YYYY/MM/dd")));
+            timeInterview1.setText("Time: " + lastSelectedCandidate.getInterviews().get(0).getTime()
+                    .format(DateTimeFormatter.ofPattern("HH:mm")));
+            durationInterview1.setText("Duration: " + lastSelectedCandidate.getInterviews().get(0).getDuration() + " minutes");
+            statusInterview1.setText("Status: " + lastSelectedCandidate.getInterviews().get(0).getStatus());
+            interviewerInterview1.setText("Interviewer: " + lastSelectedCandidate.getInterviews().get(0).getInterviewer().getName());
+
+            interview2Pane.setVisible(true);
+            dateInterview2.setText("Date: " + lastSelectedCandidate.getInterviews().get(1).getTime()
+                    .format(DateTimeFormatter.ofPattern("YYYY/MM/dd")));
+            timeInterview2.setText("Time: " + lastSelectedCandidate.getInterviews().get(1).getTime()
+                    .format(DateTimeFormatter.ofPattern("HH:mm")));
+            durationInterview2.setText("Duration: " + lastSelectedCandidate.getInterviews().get(1).getDuration() + " minutes");
+            statusInterview2.setText("Status: " + lastSelectedCandidate.getInterviews().get(1).getStatus());
+            interviewerInterview2.setText("Interviewer: " + lastSelectedCandidate.getInterviews().get(1).getInterviewer().getName());
+
+            interview3Pane.setVisible(false);
+        }
+        else {
+            interview1Pane.setVisible(true);
+            dateInterview1.setText("Date: " + lastSelectedCandidate.getInterviews().get(0).getTime()
+                    .format(DateTimeFormatter.ofPattern("YYYY/MM/dd")));
+            timeInterview1.setText("Time: " + lastSelectedCandidate.getInterviews().get(0).getTime()
+                    .format(DateTimeFormatter.ofPattern("HH:mm")));
+            durationInterview1.setText("Duration: " + lastSelectedCandidate.getInterviews().get(0).getDuration() + " minutes");
+            statusInterview1.setText("Status: " + lastSelectedCandidate.getInterviews().get(0).getStatus());
+            interviewerInterview1.setText("Interviewer: " + lastSelectedCandidate.getInterviews().get(0).getInterviewer().getName());
+
+            interview2Pane.setVisible(true);
+            dateInterview2.setText("Date: " + lastSelectedCandidate.getInterviews().get(1).getTime()
+                    .format(DateTimeFormatter.ofPattern("YYYY/MM/dd")));
+            timeInterview2.setText("Time: " + lastSelectedCandidate.getInterviews().get(1).getTime()
+                    .format(DateTimeFormatter.ofPattern("HH:mm")));
+            durationInterview2.setText("Duration: " + lastSelectedCandidate.getInterviews().get(1).getDuration() + " minutes");
+            statusInterview2.setText("Status: " + lastSelectedCandidate.getInterviews().get(1).getStatus());
+            interviewerInterview2.setText("Interviewer: " + lastSelectedCandidate.getInterviews().get(1).getInterviewer().getName());
+
+            interview3Pane.setVisible(true);
+            dateInterview3.setText("Date: " + lastSelectedCandidate.getInterviews().get(2).getTime()
+                    .format(DateTimeFormatter.ofPattern("YYYY/MM/dd")));
+            timeInterview3.setText("Time: " + lastSelectedCandidate.getInterviews().get(2).getTime()
+                    .format(DateTimeFormatter.ofPattern("HH:mm")));
+            durationInterview3.setText("Duration: " + lastSelectedCandidate.getInterviews().get(2).getDuration() + " minutes");
+            statusInterview3.setText("Status: " + lastSelectedCandidate.getInterviews().get(2).getStatus());
+            interviewerInterview3.setText("Interviewer: " + lastSelectedCandidate.getInterviews().get(2).getInterviewer().getName());
+        }
+    }
 
 
 
@@ -191,13 +287,6 @@ public class CandidatesController {
         personalInformationPane.setVisible(visibility);
         jobInformationPane.setVisible(visibility);
     }
-//    void clearCandidateInformation() {
-//        selectedCandidateName.setText("Name: ");
-//        selectedCandidateID.setText("National ID: ");
-//        selectedCandidateGender.setText("Gender: ");
-//        selectedCandidateYearsOfExperience.setText("Years Of Experience: ");
-//        selectedCandidateEducationLevel.setText("Education Level: ");
-//    }
 
     @FXML
     void onClickRemoveCandidate(ActionEvent event) {
