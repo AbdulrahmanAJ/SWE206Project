@@ -14,7 +14,7 @@ public class Candidate implements Serializable {
     Stack<Interview> interviews = new Stack<Interview>();
     JobOffer jobOffer = null;
     Unit employmentUnit = null;
-
+//
     public Candidate(String name, String nationalID, String educationLevel, int yearsOfExperience, String gender, File CV){
         this.name = name;
         this.nationalID = nationalID;

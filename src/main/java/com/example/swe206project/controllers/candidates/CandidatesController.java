@@ -23,7 +23,7 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Objects;
-
+//
 public class CandidatesController {
     // هالميثود عقدتني لمدة ثلاث ساعات
     public void initialize() {

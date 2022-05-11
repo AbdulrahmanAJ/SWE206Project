@@ -161,12 +161,12 @@
                   </Label>
                </children>
             </AnchorPane>
-            <Label layoutX="193.0" layoutY="153.0" prefHeight="26.0" prefWidth="80.0" text="Job offer" textAlignment="CENTER">
+            <Label layoutX="194.0" layoutY="153.0" prefHeight="26.0" prefWidth="80.0" text="Job offer" textAlignment="CENTER">
                <font>
                   <Font name="Dubai Regular" size="21.0" />
                </font>
             </Label>
-            <TextArea editable="false" layoutX="123.0" layoutY="185.0" prefHeight="126.0" prefWidth="218.0" text="&#10;">
+            <TextArea editable="false" layoutX="124.0" layoutY="185.0" prefHeight="126.0" prefWidth="218.0" text="&#10;">
                <font>
                   <Font size="16.0" />
                </font>
