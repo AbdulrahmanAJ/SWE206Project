@@ -15,7 +15,7 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        database = new Database(1);
+        database = new Database();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Home.fxml"));
         Scene scene = new Scene(fxmlLoader.load());

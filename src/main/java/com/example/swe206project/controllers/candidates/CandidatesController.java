@@ -29,6 +29,10 @@ public class CandidatesController {
     // هالميثود عقدتني لمدة ثلاث ساعات
     public void initialize() {
         showPanes(false);
+        determineUpcomingBtn.setDisable(true);
+        createInterviewBtn.setDisable(true);
+        createJobOfferBtn.setDisable(true);
+        removeCandidateBtn.setDisable(true);
         loadCandidates();
     }
 
@@ -55,6 +59,9 @@ public class CandidatesController {
 
     @FXML
     private Label dateInterview3;
+
+    @FXML
+    private Button determineUpcomingBtn;
 
     @FXML
     private Label durationInterview1;
@@ -141,6 +148,7 @@ public class CandidatesController {
     private Label timeInterview3;
 
 
+
     Candidate lastSelectedCandidate;
 
     @FXML
@@ -151,25 +159,6 @@ public class CandidatesController {
         appStage.setScene(heirScene);
         appStage.show();
     }
-
-    // This method is what happens when you click on a candidate from the candidate list view.
-//    @FXML
-//    protected void onCandidateListClick(){
-//        Candidate candidate = candidatesList.getSelectionModel().getSelectedItem();
-//
-//        if (candidate != null) {
-//            nameTextField.setText(candidate.getName());
-//            idTextField.setText(candidate.getNationalID());
-//            educationTextField.setText(candidate.getEducationLevel());
-//            experienceTextField.setText(candidate.getYearsOfExperience() + "");
-//            if (candidate.getGender().equalsIgnoreCase("male"))
-//                maleRadio.setSelected(true);
-//            if (candidate.getGender().equalsIgnoreCase("female"))
-//                femaleRadio.setSelected(true);
-//        }
-//    }
-
-    // This is what happens when you click add candidate a new candidate.
 
     @FXML
     void onAddNewCandidateClick(ActionEvent event) throws IOException {
@@ -213,9 +202,19 @@ public class CandidatesController {
             selectedCandidateGender.setText("Gender: " + selectedCandidate.getGender());
             selectedCandidateYearsOfExperience.setText("Years Of Experience: " + selectedCandidate.getYearsOfExperience());
             selectedCandidateEducationLevel.setText("Education Level: " + selectedCandidate.getEducationLevel());
-            if(selectedCandidate.getInterviews().size() != 0 && !selectedCandidate.getInterviews().peek().getStatus().equals("Hold")) {
+            if(selectedCandidate.getInterviews().size() != 0 && !selectedCandidate.getInterviews().peek().getStatus().equals("Hold"))
                 createInterviewBtn.setDisable(true);
-            }
+            else
+                createInterviewBtn.setDisable(false);
+            if(selectedCandidate.getInterviews().size() != 0 && selectedCandidate.getInterviews().peek().getStatus().equals("Upcoming"))
+                determineUpcomingBtn.setDisable(false);
+            else
+                determineUpcomingBtn.setDisable(true);
+            removeCandidateBtn.setDisable(false);
+            if (selectedCandidate.getInterviews().size() != 0 && selectedCandidate.getInterviews().peek().getStatus().equals("Pass"))
+                createJobOfferBtn.setDisable(false);
+            else
+                createJobOfferBtn.setDisable(true);
 
         }
     }
@@ -297,6 +296,18 @@ public class CandidatesController {
         jobInformationPane.setVisible(visibility);
     }
 
+
+    @FXML
+    void onClickDetermineUpcoming(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("candidates/ViewDetermineUpcoming.fxml")));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
+        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(scene);
+        appStage.show();
+
+        ((DetermineUpcomingInterviewController) loader.getController()).setSelectedCandidateForInterview(lastSelectedCandidate);
+    }
     @FXML
     void onClickRemoveCandidate(ActionEvent event) {
         Candidate selectedCandidate = candidatesListView.getSelectionModel().getSelectedItem();
@@ -305,6 +316,9 @@ public class CandidatesController {
             loadCandidates();
             personalInformationPane.setVisible(false);
             jobInformationPane.setVisible(false);
+            createInterviewBtn.setDisable(true);
+            createJobOfferBtn.setDisable(true);
+            removeCandidateBtn.setDisable(true);
         }
     }
 

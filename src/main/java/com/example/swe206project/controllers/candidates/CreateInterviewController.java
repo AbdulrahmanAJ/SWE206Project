@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -104,7 +105,6 @@ public class CreateInterviewController implements Initializable {
     @FXML
     void onClickInterviewType(ActionEvent event) {
         interviewTimePane.setVisible(true);
-        interviewersListView.setItems(FXCollections.observableList(App.database.interviewers));
         if (interviewersPane.isVisible()) {
             if (upcomingRadioButton.isSelected())
                 interviewStatusPane.setVisible(false);
@@ -114,7 +114,7 @@ public class CreateInterviewController implements Initializable {
     }
 //
     @FXML
-    void onClickConfirmInterview(ActionEvent event) {
+    void onClickConfirmInterview(ActionEvent event) throws IOException {
         LocalDate interviewDate = interviewDatePicker.getValue();
         String status;
         if(upcomingRadioButton.isSelected())
@@ -131,9 +131,37 @@ public class CreateInterviewController implements Initializable {
                 .addInterview(new Interview(selectedCandidateForInterview, interviewersListView.getSelectionModel().getSelectedItem(),
                         LocalDateTime.of( interviewDate.getYear(), interviewDate.getMonth(), interviewDate.getDayOfMonth(),
                                 hour, minute), status, (int) durationSlider.getValue()));
+        App.database.interviewers.get(App.database.candidates.indexOf(interviewersListView.getSelectionModel().getSelectedItem()))
+                .addInterview(new Interview(selectedCandidateForInterview, interviewersListView.getSelectionModel().getSelectedItem(),
+                        LocalDateTime.of( interviewDate.getYear(), interviewDate.getMonth(), interviewDate.getDayOfMonth(),
+                                hour, minute), status, (int) durationSlider.getValue()));
+        Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("candidates/ViewCandidatesPage.fxml")));
+        Scene heirScene = new Scene(heirParent);
+        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(heirScene);
+        appStage.show();
     }
     @FXML
     void onClickConfirmDate(ActionEvent event) {
+        ArrayList<Interviewer> availableInterviewers = (ArrayList<Interviewer>) App.database.interviewers.clone();
+        LocalDate interviewDate = interviewDatePicker.getValue();
+        for (Interviewer interviewer :
+                availableInterviewers) {
+            for (Interview interview :
+                    interviewer.getInterviews()) {
+                LocalDateTime loggedInterviewStartTime = interview.getTime();
+                LocalDateTime loggedInterviewEndTime = interview.getTime().plusMinutes(interview.getDuration());
+                LocalDateTime createdInterviewStartTime = LocalDateTime.of( interviewDate.getYear(), interviewDate.getMonth(),
+                        interviewDate.getDayOfMonth(), hour, minute);
+                LocalDateTime createdInterviewEndTime = LocalDateTime.of( interviewDate.getYear(), interviewDate.getMonth(),
+                        interviewDate.getDayOfMonth(), hour, minute).plusMinutes((int) durationSlider.getValue());
+                if (loggedInterviewStartTime.isBefore(createdInterviewStartTime) && loggedInterviewEndTime.isAfter(createdInterviewStartTime)
+                        || loggedInterviewStartTime.isBefore(createdInterviewEndTime) && loggedInterviewEndTime.isAfter(createdInterviewEndTime)) {
+                    availableInterviewers.remove(interviewer);
+                }
+            }
+        }
+        interviewersListView.setItems(FXCollections.observableList(availableInterviewers));
         interviewersPane.setVisible(true);
     }
 
