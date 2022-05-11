@@ -156,7 +156,7 @@ public class CandidatesController {
         appStage.show();
 
     }
-
+//
     // This method gets you from the candidates' page to create interview page.
     @FXML
     protected void onCreateInterviewClick(ActionEvent event) throws IOException {

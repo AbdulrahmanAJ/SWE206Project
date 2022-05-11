@@ -8,7 +8,7 @@ public class  Interview implements Serializable {
     Interviewer interviewer;
     Date time;
     String status;
-//
+
     public Candidate getCandidate() {
         return candidate;
     }

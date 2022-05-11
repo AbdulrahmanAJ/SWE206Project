@@ -7,7 +7,7 @@ public class Interviewer implements Serializable {
 
     String name;
     ArrayList<Interview> interviews = new ArrayList<Interview>();
-//
+
     public Interviewer(String name){
         this.name = name;
     }

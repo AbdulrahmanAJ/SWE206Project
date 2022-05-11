@@ -25,7 +25,7 @@ public class AddCandidateController {
 
     @FXML
     private ToggleGroup genderToggleGroup;
-//
+
     @FXML
     private TextField newCandidateEducationLevel;
 
