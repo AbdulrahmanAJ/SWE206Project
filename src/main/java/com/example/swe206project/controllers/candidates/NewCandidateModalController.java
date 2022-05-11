@@ -48,7 +48,7 @@ public class NewCandidateModalController {
         maleRadio.setUserData("M");
         femaleRadio.setUserData("F");
     }
-
+//
     @FXML
     void onAddClick(ActionEvent event){
         Stage modal = (Stage) ((Node) event.getSource()).getScene().getWindow();

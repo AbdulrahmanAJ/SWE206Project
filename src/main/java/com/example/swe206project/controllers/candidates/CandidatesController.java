@@ -200,7 +200,7 @@ public class CandidatesController {
 
         ((CreateInterviewController) loader.getController()).setSelectedCandidateForInterview(lastSelectedCandidate);
     }
-
+//
     @FXML
     void onClickSelectCandidate(MouseEvent event) {
         Candidate selectedCandidate = candidatesListView.getSelectionModel().getSelectedItem();

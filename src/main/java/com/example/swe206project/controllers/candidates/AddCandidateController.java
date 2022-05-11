@@ -28,7 +28,7 @@ public class AddCandidateController {
 
     @FXML
     private TextField newCandidateEducationLevel;
-
+//
     @FXML
     private RadioButton newCandidateFemale;
 

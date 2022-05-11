@@ -112,7 +112,7 @@ public class CreateInterviewController implements Initializable {
                 interviewStatusPane.setVisible(true);
         }
     }
-
+//
     @FXML
     void onClickConfirmInterview(ActionEvent event) {
         LocalDate interviewDate = interviewDatePicker.getValue();

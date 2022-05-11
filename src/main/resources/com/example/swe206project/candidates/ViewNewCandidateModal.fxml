@@ -12,6 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
+
 <AnchorPane prefHeight="353.0" prefWidth="369.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.controllers.candidates.NewCandidateModalController">
     <children>
         <Button layoutX="156.0" layoutY="285.0" mnemonicParsing="false" onAction="#onAddClick" prefHeight="31.0" prefWidth="58.0" text="Add ">

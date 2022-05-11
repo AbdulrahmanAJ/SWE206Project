@@ -9,7 +9,7 @@ public class  Interview implements Serializable {
     LocalDateTime time;
     String status;
     int duration;
-
+//
     public Interview(Candidate candidate, Interviewer interviewer, LocalDateTime time, String status, int duration) {
         this.candidate = candidate;
         this.interviewer = interviewer;
