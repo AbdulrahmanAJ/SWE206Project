@@ -1,6 +1,7 @@
 module com.example.swe206project {
     requires javafx.controls;
     requires javafx.fxml;
+    requires java.desktop;
 
 
     opens com.example.swe206project to javafx.fxml, javafx.controls;

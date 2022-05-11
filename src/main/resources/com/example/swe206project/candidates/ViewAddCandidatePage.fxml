@@ -1,10 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.controllers.candidates.CandidatesController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.swe206project.controllers.candidates.AddCandidateController">
    <children>
-      <Button fx:id="openPdfBtn" layoutX="274.0" layoutY="187.0" mnemonicParsing="false" onAction="#onClickOpenPdf" text="Button" />
+      <Label layoutX="116.0" layoutY="60.0" prefHeight="22.0" prefWidth="54.0" text="Name:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="85.0" layoutY="107.0" prefHeight="22.0" prefWidth="88.0" text="National ID:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="110.0" layoutY="149.0" prefHeight="22.0" prefWidth="54.0" text="Gender:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="55.0" layoutY="192.0" prefHeight="22.0" prefWidth="116.0" text="Education Level:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="30.0" layoutY="239.0" prefHeight="22.0" prefWidth="139.0" text="Years of experience:">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <TextField fx:id="newCandidateName" layoutX="169.0" layoutY="59.0" prefHeight="26.0" prefWidth="374.0" promptText="e.g., Abdulrahman Almalki" />
+      <TextField fx:id="newCandidateID" layoutX="169.0" layoutY="105.0" prefHeight="26.0" prefWidth="172.0" promptText="10 Digits, e.g., 1111111111" />
+      <RadioButton fx:id="newCandidateMale" layoutX="173.0" layoutY="151.0" mnemonicParsing="false" text="Male">
+         <toggleGroup>
+            <ToggleGroup fx:id="genderToggleGroup" />
+         </toggleGroup>
+      </RadioButton>
+      <RadioButton fx:id="newCandidateFemale" layoutX="235.0" layoutY="151.0" mnemonicParsing="false" text="Female" toggleGroup="$genderToggleGroup" />
+      <TextField fx:id="newCandidateEducationLevel" layoutX="169.0" layoutY="190.0" prefHeight="26.0" prefWidth="193.0" promptText="e.g., Bachelor" />
+      <TextField fx:id="newCandidateYearsOfExperience" layoutX="169.0" layoutY="237.0" prefHeight="26.0" prefWidth="54.0" promptText="e.g., 5" />
+      <Button layoutX="29.0" layoutY="351.0" mnemonicParsing="false" onAction="#onClickBackToCandidatesPage" text="Cancel" />
+      <Button fx:id="confirmCandidateAdditionBtn" layoutX="214.0" layoutY="351.0" mnemonicParsing="false" onAction="#onClickConfirmCandidateAddition" text="Confirm candidate addition">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>

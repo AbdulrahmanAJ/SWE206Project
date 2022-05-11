@@ -1,7 +1,8 @@
 package com.example.swe206project.controllers.candidates;
-
+import java.awt.Desktop;
 import com.example.swe206project.App;
 import com.example.swe206project.controllers.hierarchy.SiblingsModalController;
+import com.example.swe206project.controllers.hierarchy.UnitJobBandsController;
 import com.example.swe206project.models.Candidate;
 import com.example.swe206project.models.Unit;
 import javafx.collections.FXCollections;
@@ -13,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -23,25 +25,98 @@ import java.util.ArrayList;
 import java.util.Objects;
 
 public class CandidatesController {
-    ArrayList<Candidate> candidateArrayList = new ArrayList<>();
-
     // هالميثود عقدتني لمدة ثلاث ساعات
-//    public void initialize() {
-//        createJobOfferBtn.setDisable(true);
-//    }
+    public void initialize() {
+        showPanes(false);
+        loadCandidates();
+    }
+
+    void loadCandidates() {
+        candidatesListView.setItems(FXCollections.observableList(App.database.candidates));
+    }
     // view candidates page
     @FXML
-    private ListView<Candidate> candidatesList;
+    private AnchorPane Interview1Pane;
+
+    @FXML
+    private ListView<Candidate> candidatesListView;
+
+    @FXML
+    private Button createInterviewBtn;
 
     @FXML
     private Button createJobOfferBtn;
 
+    @FXML
+    private Label dateInterview1;
 
+    @FXML
+    private Label dateInterview2;
 
+    @FXML
+    private Label dateInterview3;
 
-    public void loadCandidates() {
-        candidatesList.setItems(FXCollections.observableList(App.database.candidates));
-    }
+    @FXML
+    private Label durationInterview1;
+
+    @FXML
+    private Label durationInterview2;
+
+    @FXML
+    private Label durationInterview3;
+
+    @FXML
+    private AnchorPane interview2Pane;
+
+    @FXML
+    private AnchorPane interview3Pane;
+
+    @FXML
+    private AnchorPane jobInformationPane;
+
+    @FXML
+    private Button openCVBtn;
+
+    @FXML
+    private AnchorPane personalInformationPane;
+
+    @FXML
+    private Button removeCandidateBtn;
+
+    @FXML
+    private Label selectedCandidateEducationLevel;
+
+    @FXML
+    private Label selectedCandidateGender;
+
+    @FXML
+    private Label selectedCandidateID;
+
+    @FXML
+    private Label selectedCandidateName;
+
+    @FXML
+    private Label selectedCandidateYearsOfExperience;
+
+    @FXML
+    private Label statusInterview1;
+
+    @FXML
+    private Label statusInterview2;
+
+    @FXML
+    private Label statusInterview3;
+
+    @FXML
+    private Label timeInterview1;
+
+    @FXML
+    private Label timeInterview2;
+
+    @FXML
+    private Label timeInterview3;
+
+    Candidate lastSelectedCandidate;
 
     @FXML
     void onBackToHomeClick(ActionEvent event) throws IOException {
@@ -74,75 +149,78 @@ public class CandidatesController {
     @FXML
     void onAddNewCandidateClick(ActionEvent event) throws IOException {
 
-            // create a modal that prompts the new candidate
-            FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("candidates/ViewNewCandidateModal.fxml")));
-            Parent parent = loader.load();
-            Scene scene = new Scene(parent);
-            Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-            final Stage dialog = new Stage();
-            dialog.initModality(Modality.APPLICATION_MODAL);
-            dialog.initOwner(appStage);
-            dialog.setScene(scene);
-            dialog.show();
+        Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("candidates/ViewAddCandidatePage.fxml")));
+        Scene heirScene = new Scene(heirParent);
+        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+        appStage.setScene(heirScene);
+        appStage.show();
 
-            //((SiblingsModalController) loader.getController()).loadSiblings(selectedDivision);
-
-//        loadCandidates();
     }
 
     // This method gets you from the candidates' page to create interview page.
     @FXML
     protected void onCreateInterviewClick(ActionEvent event) throws IOException {
-        Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("candidates/ViewCreateInterviewPage.fxml")));
-        Scene heirScene = new Scene(heirParent);
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("candidates/ViewCreateInterviewPage.fxml")));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setScene(heirScene);
+        appStage.setScene(scene);
         appStage.show();
+
+        ((CreateInterviewController) loader.getController()).setSelectedCandidateForInterview(lastSelectedCandidate);
+    }
+
+    @FXML
+    void onClickSelectCandidate(MouseEvent event) {
+        Candidate selectedCandidate = candidatesListView.getSelectionModel().getSelectedItem();
+        if (selectedCandidate != null) {
+            showPanes(true);
+            selectedCandidateName.setText("Name: " + selectedCandidate.getName());
+            selectedCandidateID.setText("National ID: " + selectedCandidate.getNationalID());
+            selectedCandidateGender.setText("Gender: " + selectedCandidate.getGender());
+            selectedCandidateYearsOfExperience.setText("Years Of Experience: " + selectedCandidate.getYearsOfExperience());
+            selectedCandidateEducationLevel.setText("Education Level: " + selectedCandidate.getEducationLevel());
+            lastSelectedCandidate = selectedCandidate;
+        }
     }
 
 
 
-    // view and create interview page
-    @FXML
-    private Label dateConfirmationLabel;
 
-    @FXML
-    private DatePicker interviewDatePicker;
-
-    @FXML
-    protected void OnInterviewBackClick(ActionEvent event) throws IOException{
-        Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("candidates/ViewCandidatesPage.fxml")));
-        Scene heirScene = new Scene(heirParent);
-        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setScene(heirScene);
-        appStage.show();
+    void showPanes(Boolean visibility) {
+        personalInformationPane.setVisible(visibility);
+        jobInformationPane.setVisible(visibility);
     }
+//    void clearCandidateInformation() {
+//        selectedCandidateName.setText("Name: ");
+//        selectedCandidateID.setText("National ID: ");
+//        selectedCandidateGender.setText("Gender: ");
+//        selectedCandidateYearsOfExperience.setText("Years Of Experience: ");
+//        selectedCandidateEducationLevel.setText("Education Level: ");
+//    }
 
-
-    // This method is what happens when you choose a date.
-    // TODO: Make the confirmation only appears when you choose an interviewer and a date.
     @FXML
-    void getInterviewDate(ActionEvent event) {
-        //Getting the date from the date picker
-        LocalDate interviewDate = interviewDatePicker.getValue();
-        //Setting the confirmation message
-        dateConfirmationLabel.setText("Interview with (Interviewer name) On:\n " + interviewDate);
+    void onClickRemoveCandidate(ActionEvent event) {
+        Candidate selectedCandidate = candidatesListView.getSelectionModel().getSelectedItem();
+        if (selectedCandidate != null) {
+            App.database.candidates.remove(selectedCandidate);
+            loadCandidates();
+            personalInformationPane.setVisible(false);
+            jobInformationPane.setVisible(false);
+        }
     }
-
 
     @FXML
     void onClickOpenPdf(ActionEvent event) {
-        String path = "C:\\Users\\xd7z\\Desktop\\Quickie\\transcript money.pdf";
-        File file = new File(path);
-        try {
-            if (file.exists()) {
-                Process pro = Runtime.getRuntime().exec("rundll32 url.dll,FileProtocolHandler " + path);
-                pro.waitFor();
-            } else {
-                System.out.println("file does not exist");
+        Candidate selectedCandidate = candidatesListView.getSelectionModel().getSelectedItem();
+        String path = "src/main/resources/com/example/swe206project/CandidatesCVs/" + selectedCandidate.getNationalID() + ".pdf";
+        if (Desktop.isDesktopSupported()) {
+            try {
+                File CV = selectedCandidate.getCV();
+                Desktop.getDesktop().open(CV);
+            } catch (IOException ex) {
+                System.out.println(ex);
             }
-        } catch (Exception e) {
-            System.out.println(e);
         }
     }
 

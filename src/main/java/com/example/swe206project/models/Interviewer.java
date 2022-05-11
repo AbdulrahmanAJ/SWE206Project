@@ -15,7 +15,7 @@ public class Interviewer implements Serializable {
     public String getName() {
         return name;
     }
-
+    public void setName(String name) {this.name = name;}
     public ArrayList<Interview> getInterviews() {
         return interviews;
     }

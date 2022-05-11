@@ -15,12 +15,13 @@ public class Candidate implements Serializable {
     JobOffer jobOffer = null;
     Unit employmentUnit = null;
 
-    public Candidate(String name, String nationalID, String educationLevel, int yearsOfExperience, String gender){
+    public Candidate(String name, String nationalID, String educationLevel, int yearsOfExperience, String gender, File CV){
         this.name = name;
         this.nationalID = nationalID;
         this.educationLevel = educationLevel;
         this.yearsOfExperience = yearsOfExperience;
         this.gender = gender;
+        this.CV = CV;
     }
 
     public void addInterview(Interview interview) {
