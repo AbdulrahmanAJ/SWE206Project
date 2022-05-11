@@ -35,6 +35,8 @@ public class CandidatesController {
         candidatesListView.setItems(FXCollections.observableList(App.database.candidates));
     }
     // view candidates page
+
+
     @FXML
     private AnchorPane Interview1Pane;
 
@@ -148,15 +150,26 @@ public class CandidatesController {
 
     @FXML
     void onAddNewCandidateClick(ActionEvent event) throws IOException {
-
-        Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("candidates/ViewAddCandidatePage.fxml")));
-        Scene heirScene = new Scene(heirParent);
+        // create a modal that prompts the new candidate
+        FXMLLoader loader = new FXMLLoader(Objects.requireNonNull(App.class.getResource("candidates/ViewNewCandidateModal.fxml")));
+        Parent parent = loader.load();
+        Scene scene = new Scene(parent);
         Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
-        appStage.setScene(heirScene);
-        appStage.show();
+        appStage.setResizable(false);
+        final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(appStage);
+        dialog.setScene(scene);
+        dialog.show();
+
+//        Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("candidates/ViewAddCandidatePage.fxml")));
+//        Scene heirScene = new Scene(heirParent);
+//        Stage appStage= (Stage) ((Node) event.getSource()).getScene().getWindow();
+//        appStage.setScene(heirScene);
+//        appStage.show();
 
     }
-//
+
     // This method gets you from the candidates' page to create interview page.
     @FXML
     protected void onCreateInterviewClick(ActionEvent event) throws IOException {
@@ -185,12 +198,11 @@ public class CandidatesController {
     }
 
 
-
-
     void showPanes(Boolean visibility) {
         personalInformationPane.setVisible(visibility);
         jobInformationPane.setVisible(visibility);
     }
+
 //    void clearCandidateInformation() {
 //        selectedCandidateName.setText("Name: ");
 //        selectedCandidateID.setText("National ID: ");
@@ -218,8 +230,8 @@ public class CandidatesController {
             try {
                 File CV = selectedCandidate.getCV();
                 Desktop.getDesktop().open(CV);
-            } catch (IOException ex) {
-                System.out.println(ex);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
             }
         }
     }
