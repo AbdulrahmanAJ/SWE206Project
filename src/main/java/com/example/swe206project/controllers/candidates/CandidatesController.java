@@ -89,6 +89,7 @@ public class CandidatesController {
     @FXML
     private Label interviewerInterview2;
 
+
     @FXML
     private Label interviewerInterview3;
 
