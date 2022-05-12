@@ -41,7 +41,7 @@
       </AnchorPane>
       <AnchorPane fx:id="salaryPane" layoutX="301.0" layoutY="351.0" prefHeight="238.0" prefWidth="514.0">
          <children>
-            <Label fx:id="wrongSalaryLabel" layoutX="175.0" layoutY="4.0" text="Please input a salary within the specified range!" textFill="RED">
+            <Label fx:id="wrongSalaryLabel" layoutX="178.0" layoutY="4.0" text="Please input a salary within the specified range">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

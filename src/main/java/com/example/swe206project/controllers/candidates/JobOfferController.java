@@ -86,7 +86,6 @@ public class JobOfferController {
         jobBandsPane.setVisible(false);
         jobsPane.setVisible(false);
         salaryPane.setVisible(false);
-        wrongSalaryLabel.setVisible(false);
         confirmJobOfferBtn.setDisable(true);
     }
     @FXML

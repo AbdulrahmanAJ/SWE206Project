@@ -14,7 +14,7 @@
             <Font size="32.0" />
          </font>
       </Label>
-      <Label fx:id="jobBand" alignment="TOP_CENTER" layoutX="39.0" layoutY="96.0" prefHeight="7.0" prefWidth="133.0" text="Job band jobs:">
+      <Label fx:id="jobBand" alignment="TOP_CENTER" layoutX="39.0" layoutY="96.0" prefHeight="19.0" prefWidth="326.0" text="Job band jobs:">
          <font>
             <Font size="13.0" />
          </font>
