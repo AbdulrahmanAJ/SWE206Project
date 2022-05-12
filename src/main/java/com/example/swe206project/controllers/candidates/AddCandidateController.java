@@ -19,26 +19,26 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class AddCandidateController {
-
     @FXML
     private Button confirmCandidateAdditionBtn;
 
     @FXML
-    private ToggleGroup genderToggleGroup;
-
-    @FXML
-    private TextField newCandidateEducationLevel;
-    @FXML
-    private RadioButton newCandidateFemale;
-
+    private TextField newCandidateName;
     @FXML
     private TextField newCandidateID;
 
-    @FXML
-    private RadioButton newCandidateMale;
 
     @FXML
-    private TextField newCandidateName;
+    private ToggleGroup genderToggleGroup;
+    @FXML
+    private RadioButton newCandidateMale;
+    @FXML
+    private RadioButton newCandidateFemale;
+
+
+    @FXML
+    private TextField newCandidateEducationLevel;
+
 
     @FXML
     private TextField newCandidateYearsOfExperience;
@@ -74,6 +74,7 @@ public class AddCandidateController {
             gender = "Female";
         App.database.candidates.add(new Candidate(newCandidateName.getText(), newCandidateID.getText(),
                 newCandidateEducationLevel.getText(), Integer.parseInt(newCandidateYearsOfExperience.getText()),gender,
+                //This following line suppose that we have a collection of candidates CVs', and we will use the ID as a unique value.
                 new File("src/main/resources/com/example/swe206project/CandidatesCVs/" + newCandidateID.getText() + ".pdf")));
         Parent heirParent = FXMLLoader.load(Objects.requireNonNull(App.class.getResource("candidates/ViewCandidatesPage.fxml")));
         Scene heirScene = new Scene(heirParent);

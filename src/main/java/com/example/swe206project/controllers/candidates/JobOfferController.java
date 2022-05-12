@@ -100,7 +100,7 @@ public class JobOfferController {
 
 
     @FXML
-    void onKeyReleaseSalaryTextField(KeyEvent event) {
+    void onKeyReleaseSalaryTextField() {
         if (!actualSalaryTextField.getText().isBlank())
             actualBasicSalary = (Integer.parseInt(actualSalaryTextField.getText()));
         if (actualBasicSalary >= minSalary && actualBasicSalary <= maxSalary) {
@@ -130,7 +130,7 @@ public class JobOfferController {
     }
 
     @FXML
-    void onClickJobBandsListView(MouseEvent event) {
+    void onClickJobBandsListView() {
         JobBand selectedJobBand = jobBandsListView.getSelectionModel().getSelectedItem();
         if (selectedJobBand != null) {
             jobsPane.setVisible(true);
@@ -141,7 +141,7 @@ public class JobOfferController {
     }
 
     @FXML
-    void onClickJobsListView(MouseEvent event) {
+    void onClickJobsListView() {
         Job selectedJob = jobsListView.getSelectionModel().getSelectedItem();
         if (selectedJob != null) {
             salaryPane.setVisible(true);
@@ -177,7 +177,7 @@ public class JobOfferController {
     }
 
     @FXML
-    void onClickUnitsListView(MouseEvent event) {
+    void onClickUnitsListView() {
         Unit selectedUnit = unitsListView.getSelectionModel().getSelectedItem();
         if (selectedUnit != null) {
             jobsListView.getItems().clear();

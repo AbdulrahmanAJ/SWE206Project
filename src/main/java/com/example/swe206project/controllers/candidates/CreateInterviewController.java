@@ -30,6 +30,7 @@ import java.util.Objects;
 import java.util.ResourceBundle;
 
 public class CreateInterviewController implements Initializable {
+    // The last selected candidate is the candidate gotten from the candidates page
     Candidate selectedCandidateForInterview;
 
     public void setSelectedCandidateForInterview(Candidate selectedCandidateForInterview) {
@@ -104,7 +105,7 @@ public class CreateInterviewController implements Initializable {
     }
 
     @FXML
-    void onClickInterviewType(ActionEvent event) {
+    void onClickInterviewType() {
         interviewTimePane.setVisible(true);
         if (interviewersPane.isVisible()) {
             if (upcomingRadioButton.isSelected())
@@ -143,7 +144,7 @@ public class CreateInterviewController implements Initializable {
         appStage.show();
     }
     @FXML
-    void onClickConfirmDate(ActionEvent event) {
+    void onClickConfirmDate() {
         ArrayList<Interviewer> availableInterviewers = (ArrayList<Interviewer>) App.database.interviewers.clone();
         ArrayList<Interviewer> toRemove = new ArrayList<Interviewer>();
         LocalDate interviewDate = interviewDatePicker.getValue();

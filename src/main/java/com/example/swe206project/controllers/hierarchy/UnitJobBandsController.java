@@ -46,7 +46,7 @@ public class UnitJobBandsController {
     }
 
     @FXML
-    void onUnlinkJobBandClick(ActionEvent event) {
+    void onUnlinkJobBandClick() {
         JobBand selectedJobBand = linkedJobBandsListView.getSelectionModel().getSelectedItem();
         if (selectedJobBand != null) {
             selectedUnit.unlinkJobBand(selectedJobBand);

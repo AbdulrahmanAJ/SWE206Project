@@ -66,7 +66,7 @@ public class JobBandsController {
     }
 
     @FXML
-    void onAddJobBandClick(ActionEvent event) {
+    void onAddJobBandClick() {
         String jobBandName = jobBandNameTextField.getText();
         if (! jobBandName.isBlank()) {
             JobBand newJobBand = new JobBand(jobBandName);
@@ -77,7 +77,7 @@ public class JobBandsController {
     }
 
     @FXML
-    void onDeleteJobBandClick(ActionEvent event) {
+    void onDeleteJobBandClick() {
         JobBand selectedJobBand = jobBandListView.getSelectionModel().getSelectedItem();
 
         if (selectedJobBand != null) {

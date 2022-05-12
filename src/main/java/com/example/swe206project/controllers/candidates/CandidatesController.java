@@ -28,7 +28,6 @@ import java.util.ArrayList;
 import java.util.Objects;
 //
 public class CandidatesController {
-    // هالميثود عقدتني لمدة ثلاث ساعات
     public void initialize() {
         showPanes(false);
         determineUpcomingBtn.setDisable(true);
@@ -38,12 +37,10 @@ public class CandidatesController {
         loadCandidates();
     }
 
+    // Loads the values from the database
     void loadCandidates() {
         candidatesListView.setItems(FXCollections.observableList(App.database.candidates));
     }
-    // view candidates page
-
-
     @FXML
     private ListView<Candidate> candidatesListView;
 
@@ -193,7 +190,7 @@ public class CandidatesController {
         ((JobOfferController) loader.getController()).setSelectedCandidateForOffer(lastSelectedCandidate);
     }
     @FXML
-    void onClickSelectCandidate(MouseEvent event) {
+    void onClickSelectCandidate() {
         Candidate selectedCandidate = candidatesListView.getSelectionModel().getSelectedItem();
         if (selectedCandidate != null) {
             lastSelectedCandidate = selectedCandidate;
@@ -319,9 +316,9 @@ public class CandidatesController {
 
         ((DetermineUpcomingInterviewController) loader.getController()).setSelectedCandidateForInterview(lastSelectedCandidate);
     }
-
+    // This method will open the CV File from the collection of CVs
     @FXML
-    void onClickOpenPdf(ActionEvent event) {
+    void onClickOpenPdf() {
         Candidate selectedCandidate = candidatesListView.getSelectionModel().getSelectedItem();
         String path = "src/main/resources/com/example/swe206project/CandidatesCVs/" + selectedCandidate.getNationalID() + ".pdf";
         if (Desktop.isDesktopSupported()) {

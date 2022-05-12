@@ -74,7 +74,7 @@ public class DetermineUpcomingInterviewController {
     }
 
     @FXML
-    void onClickStatusRadioButton(ActionEvent event) {
+    void onClickStatusRadioButton() {
         confirmStatusBtn.setDisable(false);
     }
 

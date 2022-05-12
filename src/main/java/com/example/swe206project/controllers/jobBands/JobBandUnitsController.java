@@ -32,7 +32,7 @@ public class JobBandUnitsController {
     }
 
     @FXML
-    void onLinkUnitClick(ActionEvent event) {
+    void onLinkUnitClick() {
         Unit selectedUnit = unlinkedUnitsListView.getSelectionModel().getSelectedItem();
         if (selectedUnit != null) {
             selectedUnit.linkJobBand(selectedJobBand);
@@ -42,7 +42,7 @@ public class JobBandUnitsController {
     }
 
     @FXML
-    void onUnlinkUnitClick(ActionEvent event) {
+    void onUnlinkUnitClick() {
         Unit selectedUnit = linkedUnitsListView.getSelectionModel().getSelectedItem();
         if (selectedUnit != null) {
             selectedUnit.unlinkJobBand(selectedJobBand);

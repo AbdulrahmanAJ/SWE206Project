@@ -36,7 +36,7 @@ public class JobsController {
     }
 
     @FXML
-    void onAddJobClick(ActionEvent event) {
+    void onAddJobClick() {
         String jobName = jobNameTextField.getText();
         if (! jobName.isBlank()) {
             Job newJob = new Job(jobName);

@@ -155,7 +155,7 @@ public class HierarchyController {
     }
 
     @FXML
-    void onAddDepartmentClick(ActionEvent event) {
+    void onAddDepartmentClick() {
         Unit currentDirectorate = directoratesListView.getSelectionModel().getSelectedItem();
 
         if (currentDirectorate != null){
@@ -172,7 +172,7 @@ public class HierarchyController {
     }
 
     @FXML
-    void onAddDirectoratesClick(ActionEvent event) {
+    void onAddDirectoratesClick() {
         Unit currentDivision = divisionsListView.getSelectionModel().getSelectedItem();
         if (currentDivision != null) {
             String newDirectoratesName = directorateTextField.getText();
@@ -187,7 +187,7 @@ public class HierarchyController {
     }
 
     @FXML
-    void onAddDivisionClick(ActionEvent event) {
+    void onAddDivisionClick() {
         String newDivisionName = divisionTextField.getText();
         if (! newDivisionName.isBlank()) {
             Unit newDivision = new Unit(newDivisionName, 0);
@@ -200,7 +200,7 @@ public class HierarchyController {
 
 
     @FXML
-    void onDeleteDepartmentClick(ActionEvent event) {
+    void onDeleteDepartmentClick() {
         Unit selectedDepartment = departmentsListView.getSelectionModel().getSelectedItem();
 
         if (selectedDepartment != null ){
@@ -210,7 +210,7 @@ public class HierarchyController {
     }
 
     @FXML
-    void onDeleteDirectoratesClick(ActionEvent event) {
+    void onDeleteDirectoratesClick() {
         Unit selectedDirectorate = directoratesListView.getSelectionModel().getSelectedItem();
 
         if (selectedDirectorate != null) {
@@ -220,7 +220,7 @@ public class HierarchyController {
     }
 
     @FXML
-    void onDeleteDivisionClick(ActionEvent event) {
+    void onDeleteDivisionClick() {
         Unit selectedDivision = divisionsListView.getSelectionModel().getSelectedItem();
         if (selectedDivision != null) {
             App.database.hierarchy.deleteUnit(selectedDivision);

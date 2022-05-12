@@ -34,7 +34,7 @@ public class InterviewersController {
     }
 
     @FXML
-    void onAddInterviewerClick(ActionEvent event) {
+    void onAddInterviewerClick() {
         String newInterviewerName = interviewerNameTextField.getText();
 
         if (! newInterviewerName.isBlank()) {

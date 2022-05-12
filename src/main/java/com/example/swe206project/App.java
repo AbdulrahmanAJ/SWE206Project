@@ -15,7 +15,12 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        database = new Database();
+        // If it's your first time running the app on your PC, please put 1 and the run the app.
+        // After you run the app, close it and delete the 1 and run it again.
+                             // |
+                             // |
+                             // V
+        database = new Database(1);
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Home.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
