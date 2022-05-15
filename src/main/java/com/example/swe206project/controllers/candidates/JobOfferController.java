@@ -179,7 +179,9 @@ public class JobOfferController {
     void onClickUnitsListView() {
         Unit selectedUnit = unitsListView.getSelectionModel().getSelectedItem();
         if (selectedUnit != null) {
-            jobsListView.getItems().clear();
+            jobsPane.setVisible(false);
+            salaryPane.setVisible(false);
+            confirmJobOfferBtn.setDisable(true);
             jobBandsPane.setVisible(true);
             jobBandsListView.setItems(FXCollections.observableList(selectedUnit.getJobBands()));
             workingUnit = selectedUnit;

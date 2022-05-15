@@ -20,7 +20,7 @@ public class App extends Application {
                              // |
                              // |
                              // V
-        database = new Database(1);
+        database = new Database();
 
         FXMLLoader fxmlLoader = new FXMLLoader(App.class.getResource("Home.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
